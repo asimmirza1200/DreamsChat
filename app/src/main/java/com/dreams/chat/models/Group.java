@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import io.realm.RealmList;
@@ -17,7 +18,7 @@ import io.realm.annotations.RealmClass;
  */
 
 @RealmClass
-public class Group implements Parcelable, RealmModel {
+public class Group implements Parcelable, RealmModel  {
     private String id, name, status, image, admin;
     private RealmList<String> userIds;
     private RealmList<String> grpExitUserIds;

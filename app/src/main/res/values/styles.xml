@@ -68,7 +68,10 @@
         <!-- The hint text that appears when the user has not typed anything -->
 
     </style>
-
+    <style name="PopupAnimation" parent="Widget.AppCompat.PopupWindow">
+        <item name="android:windowEnterAnimation">@anim/bottom_up</item>
+        <item name="android:windowExitAnimation">@anim/bottom_down</item>
+    </style>
     <declare-styleable name="CircularStatusView">
         <attr name="portion_width" format="dimension" />
         <attr name="portion_color" format="color" />

@@ -24,6 +24,7 @@
                 android:layout_marginStart="@dimen/_10sdp">
 
                 <RelativeLayout
+
                     android:id="@+id/toolbarContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -156,8 +157,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="24dp"
+
         android:src="@drawable/ic_add"
-        android:visibility="visible"
+        android:visibility="gone"
         app:backgroundTint="@color/colorPrimary"
         app:fabSize="normal" />
 </FrameLayout>

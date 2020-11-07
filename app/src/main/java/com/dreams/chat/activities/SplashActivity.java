@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.daasuu.ahp.AnimateHorizontalProgressBar;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.sinch.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -41,7 +43,8 @@ public class SplashActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Group main_group = dataSnapshot.getValue(Group.class);
                         Constants.maingroup=main_group;
-                        startActivity(helper.isLoggedIn()?ChatActivity.newIntent(getApplicationContext(), null, main_group):new Intent(SplashActivity.this, SignInActivity.class));
+                        Log.d("sdjslkjdlsk",new Gson().toJson(main_group));
+                        startActivity(helper.isLoggedIn()?new Intent(SplashActivity.this, HomeActivity.class):new Intent(SplashActivity.this, SignInActivity.class));
                         finish();
 
                     }

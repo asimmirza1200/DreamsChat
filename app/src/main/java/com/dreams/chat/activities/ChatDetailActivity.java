@@ -474,7 +474,8 @@ public class ChatDetailActivity extends BaseActivity implements OnUserDetailFrag
         if (group != null) {
             userName.setEnabled(true);
             userStatus.setEnabled(true);
-            userStatus.setVisibility(View.GONE);
+            userStatus.setVisibility(View.VISIBLE);
+            userStatus.setText(group.getStatus());
             done.setVisibility(View.VISIBLE);
             pickImage.setVisibility(View.VISIBLE);
         } else {

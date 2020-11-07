@@ -68,6 +68,7 @@ import com.dreams.chat.models.Contact;
 import com.dreams.chat.models.DownloadFileEvent;
 import com.dreams.chat.models.Group;
 import com.dreams.chat.models.Message;
+import com.dreams.chat.models.RecipeModel;
 import com.dreams.chat.models.SendRecipeChatModel;
 import com.dreams.chat.models.Status;
 import com.dreams.chat.models.SubmittedPicsModel;
@@ -135,9 +136,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -160,6 +167,8 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
     private static final int REQUEST_PERMISSION_CALL = 951;
     private static final String EXTRA_DATA_GROUP1 = "EXTRA_DATA_GROUP1";
     private static String EXTRA_DATA_GROUP = "extradatagroup";
+    private static String EXTRA_DATA_Recipe = "extradatarecipe";
+
     private static String EXTRA_DATA_USER = "extradatauser";
     private static String EXTRA_DATA_LIST = "extradatalist";
     private static String DELETE_TAG = "deletetag";
@@ -188,7 +197,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
     private RecyclerView recyclerView;
     private EmojiEditText newMessage;
     private ImageView usersImage, addAttachment, sendMessage, attachment_emoji;
-    private LinearLayout rootView, sendContainer, myAttachmentLLY;
+    private LinearLayout rootView, sendContainer,expired, myAttachmentLLY;
     private ImageView callAudio, callVideo;
     List<SubmittedPicsModel> post_recipe_list;
     private String cameraPhotoPath;
@@ -242,6 +251,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
             }
         }
     };
+    private RecipeModel recipeModel;
 
     @Override
     void myUsersResult(ArrayList<User> myUsers) {
@@ -330,17 +340,38 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
         this.helper = new Helper(ChatActivity.this);
         this.myUsersNameInPhoneMap = helper.getCacheMyUsers();
         Intent intent = getIntent();
-        if (intent.hasExtra(EXTRA_DATA_USER)) {
-            user = intent.getParcelableExtra(EXTRA_DATA_USER);
-            Helper.CURRENT_CHAT_ID = user.getId();
-        } else if (intent.hasExtra(EXTRA_DATA_GROUP)) {
+//        if (intent.hasExtra(EXTRA_DATA_USER)) {
+//            user = intent.getParcelableExtra(EXTRA_DATA_USER);
+//            Helper.CURRENT_CHAT_ID = user.getId();
+//        } else if (intent.hasExtra(EXTRA_DATA_GROUP)) {
             group = intent.getParcelableExtra(EXTRA_DATA_GROUP);
             Helper.CURRENT_CHAT_ID = group.getId();
-        } else {
-            finish();//temporary fix
+//        } else {
+//            finish();//temporary fix
+//        }
+        initUi();
+
+         recipeModel= (RecipeModel) intent.getSerializableExtra(EXTRA_DATA_Recipe);
+        Date current = Calendar.getInstance().getTime();
+        String string = "January 2, 2010";
+        DateFormat format = new SimpleDateFormat("dd-MM-yyy HH:mm aa", Locale.ENGLISH);
+        Date date = null;
+        try {
+            date = format.parse(recipeModel.getEnddate());
+            if (current.after(date)){
+                sendContainer.setVisibility(View.GONE);
+                expired.setVisibility(View.VISIBLE);
+
+            }else {
+                expired.setVisibility(View.GONE);
+                sendContainer.setVisibility(View.VISIBLE);
+
+            }
+        } catch (ParseException e) {
+            Toast.makeText(this, "date error", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
 
-        initUi();
 
         //set basic user info
         String nameText = null, statusText = null, imageUrl = null;
@@ -488,6 +519,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
         addAttachment = findViewById(R.id.add_attachment);
         sendMessage = findViewById(R.id.send);
         ImageView addSubgroup = findViewById(R.id.addsubGroup);
+        expired = findViewById(R.id.expired);
 
         sendContainer = findViewById(R.id.sendContainer);
         myAttachmentLLY = findViewById(R.id.layout_chat_attachment_LLY);
@@ -1291,15 +1323,15 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
                 break;
             case R.id.chatToolbarContent:
                 if (toolbarContent.getVisibility() == View.VISIBLE) {
-                    if (user != null) {
-                        startActivityForResult(ChatDetailActivity.newIntent(this, user), REQUEST_CODE_UPDATE_USER);
-                    }else if (group != null) {
-                        if (!Constants.maingroup.getId().equals(group.getId())){
+//                    if (user != null) {
+//                        startActivityForResult(ChatDetailActivity.newIntent(this, user), REQUEST_CODE_UPDATE_USER);
+//                    }else if (group != null) {
+//                        if (!Constants.maingroup.getId().equals(group.getId())){
                             startActivityForResult(ChatDetailActivity.newIntent(this, group), REQUEST_CODE_UPDATE_GROUP);
 
-                        }
+//                        }
 
-                    }
+//                    }
                 }
                 break;
             case R.id.attachment_contact:
@@ -1482,8 +1514,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
 
     }
 
-    private void sendMessage(String messageBody,
-                             @AttachmentTypes.AttachmentType int attachmentType, Attachment attachment) {
+    private void sendMessage(String messageBody, @AttachmentTypes.AttachmentType int attachmentType, Attachment attachment) {
         //Create message object
         Message message = new Message();
         message.setAttachmentType(attachmentType);
@@ -1662,15 +1693,9 @@ String content;
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (resultCode == AppCompatActivity.RESULT_OK) {
             switch (requestCode) {
-                case 123:
-                    content=data.getStringExtra("content");
-                    post_recipe_list=new Gson().fromJson(data.getStringExtra("images"),new TypeToken<List<SubmittedPicsModel>>(){}.getType());
-
-                    SendRecipeChatModel sendRecipeChatModel=new SendRecipeChatModel(content,post_recipe_list);
-
-                    sendMessage(new Gson().toJson(sendRecipeChatModel), AttachmentTypes.NONE_TEXT, null);
 
                 case Picker.PICK_IMAGE_DEVICE:
                     if (imagePicker == null) {
@@ -1702,8 +1727,11 @@ String content;
                     break;
             }
         }
+
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
+
+
                 case REQUEST_CODE_UPDATE_USER:
                     user = data.getParcelableExtra(EXTRA_DATA_USER);
                     userUpdated(user);
@@ -2029,6 +2057,19 @@ String content;
         return intent;
     }
 
+    public static Intent newIntent(Context context, ArrayList<Message> forwardMessages, Group group, RecipeModel recipeModel) {
+        //intent contains user to chat with and message forward list if any.
+        Intent intent = new Intent(context, ChatActivity.class);
+        intent.putExtra(EXTRA_DATA_GROUP, group);
+        intent.putExtra(EXTRA_DATA_Recipe, recipeModel);
+
+//        intent.putExtra(EXTRA_DATA_GROUP1, group);
+        //intent.removeExtra(EXTRA_DATA_USER);
+        if (forwardMessages == null)
+            forwardMessages = new ArrayList<>();
+        intent.putParcelableArrayListExtra(EXTRA_DATA_LIST, forwardMessages);
+        return intent;
+    }
     @Override
     public boolean isRecordingPlaying(String fileName) {
         return isMediaPlayerPlaying() && currentlyPlaying.equals(fileName);

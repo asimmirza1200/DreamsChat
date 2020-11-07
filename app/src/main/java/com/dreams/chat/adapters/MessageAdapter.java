@@ -27,6 +27,7 @@ import com.dreams.chat.viewHolders.MessageAttachmentRecordingViewHolder;
 import com.dreams.chat.viewHolders.MessageAttachmentVideoViewHolder;
 import com.dreams.chat.viewHolders.MessageTextViewHolder;
 import com.dreams.chat.viewHolders.MessageTypingViewHolder;
+import com.dreams.chat.viewHolders.RecipeViewHolder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -88,6 +89,8 @@ public class MessageAdapter extends RecyclerView.Adapter<BaseMessageViewHolder> 
                 return new MessageAttachmentVideoViewHolder(LayoutInflater.from(context).inflate(R.layout.item_message_attachment_video, parent, false), itemClickListener, messages);
             case AttachmentTypes.NONE_TYPING:
                 return new MessageTypingViewHolder(LayoutInflater.from(context).inflate(R.layout.item_message_typing, parent, false));
+            case AttachmentTypes.RECIPE:
+                return new RecipeViewHolder(LayoutInflater.from(context).inflate(R.layout.item_recipe, parent, false),itemClickListener,messages);
             case AttachmentTypes.NONE_TEXT:
             default:
                 return new MessageTextViewHolder(LayoutInflater.from(context).inflate(R.layout.item_message_text, parent, false), newMessage, itemClickListener, messages);

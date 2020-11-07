@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: br.com.simplepass:loading-button-android:2.2.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-button-android-2.2.0.aar/859ee4c5a6f9c15016519a864531387b/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-button-android-2.2.0.aar/859ee4c5a6f9c15016519a864531387b/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-button-android-2.2.0.aar/859ee4c5a6f9c15016519a864531387b/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-button-android-2.2.0.aar/f778705e2fc1cb1da6fe71700a78d0d2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-button-android-2.2.0.aar/f778705e2fc1cb1da6fe71700a78d0d2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-button-android-2.2.0.aar/f778705e2fc1cb1da6fe71700a78d0d2/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

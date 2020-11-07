@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.core.content.ContextCompat;
 import android.text.format.DateFormat;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
@@ -150,13 +151,17 @@ public class Helper {
     }
 
     public void setLoggedInUser(User user) {
+        Log.d("kjdskjdjskd","share");
+
         sharedPreferenceHelper.setStringPreference(USER, gson.toJson(user, new TypeToken<User>() {
         }.getType()));
     }
 
     public void logout() {
+
         sharedPreferenceHelper.clearPreference(SEND_OTP);
         sharedPreferenceHelper.clearPreference(USER);
+        sharedPreferenceHelper.clear();
     }
 
     public void setPhoneNumberForVerification(String phone) {
@@ -172,6 +177,8 @@ public class Helper {
     }
 
     public boolean isLoggedIn() {
+        Log.d("kjdskjdjskd",sharedPreferenceHelper.getStringPreference(USER)+"");
+
         return sharedPreferenceHelper.getStringPreference(USER) != null;
     }
 
@@ -229,7 +236,7 @@ public class Helper {
 //        String reverseUserNumber = new StringBuffer(userPhone).reverse().toString().substring(0, 7);
 //        String reversePhoneNumber = new StringBuffer(phoneNumber).reverse().toString().substring(0, 7);
 //        return reversePhoneNumber.equals(reverseUserNumber);
-        return userPhone.substring(userPhone.length() - 7, userPhone.length()).equals(phoneNumber.substring(phoneNumber.length() - 7, phoneNumber.length()));
+        return userPhone.substring(3).equals(phoneNumber.substring(3));
     }
 
     public static Realm getRealmInstance() {
@@ -632,6 +639,7 @@ public class Helper {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 helper.setLoggedInUser(userMe);
+
                                                 Toast.makeText(context, "Unblocked", Toast.LENGTH_SHORT).show();
                                             }
                                         })

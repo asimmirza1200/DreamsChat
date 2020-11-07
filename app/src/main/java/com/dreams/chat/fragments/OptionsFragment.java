@@ -87,10 +87,12 @@ public class OptionsFragment extends BaseFullDialogFragment implements ImagePick
         helper = new Helper(getContext());
         userMe = helper.getLoggedInUser();
 
-        BaseApplication.getUserRef().child(userMe.getId()).addValueEventListener(new ValueEventListener() {
+        BaseApplication.getUserRef().child(userMe.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userMe = dataSnapshot.getValue(User.class);
+                Log.i("kjdskjdjskd", "skd;sakd");
+
                 helper.setLoggedInUser(userMe);
             }
 
@@ -206,8 +208,7 @@ public class OptionsFragment extends BaseFullDialogFragment implements ImagePick
                             public void onClick(View view) {
                                 FirebaseAuth.getInstance().signOut();
                                 LocalBroadcastManager.getInstance(getContext()).sendBroadcast(new Intent(Helper.BROADCAST_LOGOUT));
-                                sinchServiceInterface.stopClient();
-                                helper.logout();
+                                //sinchServiceInterface.stopClient();
                                 getActivity().finish();
 
                              /*   Helper.getRealmInstance().executeTransaction(new Realm.Transaction() {
@@ -216,6 +217,7 @@ public class OptionsFragment extends BaseFullDialogFragment implements ImagePick
                                             realm.delete(Chat.class);
                                         }
                                     });*/
+                                helper.logout();
 
                                 Intent mIntent = new Intent(getContext(), SignInActivity.class);
                                 mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

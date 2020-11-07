@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">DreamsChat</string>
+    <string name="app_name">SocialChat</string>
 
     <string name="permission_read_ext_storage_denied" tools:keep="@string/permission_read_ext_storage_denied">Read external storage permission was denied. Please consider granting it in order to upload image!</string>
     <string name="permission_read_ext_storage_never_askagain" tools:keep="@string/permission_read_ext_storage_never_askagain">Read external storage permission was denied with never ask again.</string>
@@ -26,7 +26,7 @@
     <string name="docs">Docs</string>
     <string name="view_all">View all</string>
     <string name="empty_text_chat_list">Your chats appear here\nStart chatting by selecting a user.</string>
-    <string name="empty_group_chat_list">Your group chats appear here\nStart chatting by selecting a group.</string>
+    <string name="empty_group_chat_list">Empty.</string>
     <string name="empty_text_status_list">Your status appear here\nStart uploading your status here.</string>
     <string name="empty_log_call_list">Your call logs appear here\nStart by selecting a user.</string>
     <string name="no_groups">You have no groups\nCreate a new group to begin with.</string>
@@ -73,6 +73,6 @@ Neque aliquam vestibulum morbi blandit. Molestie nunc non blandit massa enim nec
     <string name="err_description">Please enter content</string>
     <string name="Add_photo">Add Picture</string>
     <string name="Capture_Photo">Capture Picture</string>
-    <string name="Choose_from_Gallery">Coode from gallery</string>
+    <string name="Choose_from_Gallery">Choose from gallery</string>
     <string name="Cancel">Cancel</string>
 </resources>

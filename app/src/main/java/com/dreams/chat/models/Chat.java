@@ -14,7 +14,6 @@ public class  Chat implements RealmModel {
     private User user;
     private Group group;
     private boolean read;
-
     public boolean isRead() {
         return read;
     }
@@ -33,6 +32,8 @@ public class  Chat implements RealmModel {
     public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
+
+
 
     public Group getGroup() {
         return group;

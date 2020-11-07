@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/parentLayout"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/_10sdp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:visibility="visible"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp">
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginLeft="@dimen/_50sdp"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:elevation="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/backGround"
+                android:padding="@dimen/_10sdp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_marginLeft="@dimen/_60sdp"
+                    android:id="@+id/rlHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_alignParentTop="true">
+
+
+                    <RelativeLayout
+                        android:id="@+id/rlNameDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:id="@+id/endtvDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="19 Aug"
+                            android:visibility="visible"
+                            android:textColor="@color/transparent_black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/senderName"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Matt Maxwell"
+                            android:layout_below="@id/endtvDate"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/senderName"
+                            android:text="19 Aug"
+
+                            android:visibility="gone"
+                            android:textColor="@color/transparent_black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/more"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        app:tint="@color/black"
+                        android:src="@drawable/ic_baseline_more_vert_24"
+                        />
+
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/tvType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/bg_recipe_rounded_corners"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Challenge"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_15sdp" />
+                <TextView
+                    android:id="@+id/tvContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvType"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_70sdp"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine"
+                    android:text="Hi,  want to sha"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+                <TextView
+                    android:id="@+id/accept"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_60sdp"
+                    android:background="@drawable/bg_recipe_rounded_corners"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Accept Challenge"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_15sdp" />
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/timeLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/backGround"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <include
+                    layout="@layout/partial_message_status_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_5sdp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ivProfilePicture"
+            android:layout_width="@dimen/_120sdp"
+            android:scaleType="centerCrop"
+            android:layout_height="@dimen/_120sdp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/bg_logo" />
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

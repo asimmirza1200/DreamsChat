@@ -1,6 +1,12 @@
 package com.dreams.chat.models;
 
-public class RecipeModel {
+import com.dreams.chat.adapters.Comments;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class RecipeModel implements Serializable {
     public String getName() {
         return name;
     }
@@ -9,11 +15,11 @@ public class RecipeModel {
         this.name = name;
     }
 
-    public String getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(long date) {
         this.date = date;
     }
 
@@ -41,6 +47,9 @@ public class RecipeModel {
         this.comments_count = comments_count;
     }
 
+    public RecipeModel() {
+    }
+
     public String getLikes() {
         return likes;
     }
@@ -57,26 +66,93 @@ public class RecipeModel {
         this.profile_picture = profile_picture;
     }
 
-    public RecipeModel(String name, String date, String type, String content, String comments_count, String likes, String profile_picture,boolean isLiked) {
+    public RecipeModel(String id,String name, long date, String type, String content, String comments_count, String likes, String profile_picture, List<SubmittedPicsModel> post_recipe_list) {
         this.name = name;
         this.date = date;
+        this.post_recipe_list = post_recipe_list;
         this.type = type;
+        this.id=id;
         this.content = content;
         this.comments_count = comments_count;
         this.likes = likes;
         this.profile_picture=profile_picture;
-        this.isLiked=isLiked;
+    }
+    List<SubmittedPicsModel> post_recipe_list;
+    List<String> usersId=new ArrayList<>();
+    ArrayList<Comments> commentsArrayList=new ArrayList<>();;
+    String name;
+    long date;
+    String type,id,key;
+
+    String content;
+    String comments_count;
+    String likes;
+    String profile_picture;
+    String startdate;
+    String enddate;
+    String group;
+
+    public ArrayList<Comments> getCommentsArrayList() {
+        return commentsArrayList;
     }
 
-    String name,date,type,content,comments_count,likes,profile_picture;
-
-    public boolean isLiked() {
-        return isLiked;
+    public void setCommentsArrayList(ArrayList<Comments> commentsArrayList) {
+        this.commentsArrayList = commentsArrayList;
     }
 
-    public void setLiked(boolean liked) {
-        isLiked = liked;
+    public List<String> getUsersId() {
+        return usersId;
     }
 
-    boolean isLiked;
+    public void setUsersId(List<String> usersId) {
+        this.usersId = usersId;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public List<SubmittedPicsModel> getPost_recipe_list() {
+        return post_recipe_list;
+    }
+
+    public void setPost_recipe_list(List<SubmittedPicsModel> post_recipe_list) {
+        this.post_recipe_list = post_recipe_list;
+    }
+
+    public String getStartdate() {
+        return startdate;
+    }
+
+    public void setStartdate(String startdate) {
+        this.startdate = startdate;
+    }
+
+    public String getEnddate() {
+        return enddate;
+    }
+
+    public void setEnddate(String enddate) {
+        this.enddate = enddate;
+    }
 }

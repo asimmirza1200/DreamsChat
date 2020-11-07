@@ -128,6 +128,7 @@ public class SignInActivity extends AppCompatActivity {
         if (user != null) {    //Check if user if logged in
 //            done();
             startActivity(new Intent(this, MainActivity.class));
+            Toast.makeText(this, "dfjslkdjf", Toast.LENGTH_SHORT).show();
             finish();
         } else {
             //init vars

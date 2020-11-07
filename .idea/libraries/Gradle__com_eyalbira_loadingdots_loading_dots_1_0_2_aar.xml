@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.eyalbira.loadingdots:loading-dots:1.0.2@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-dots-1.0.2.aar/23c42f8872fa735b45ceb37fc3a12a40/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-dots-1.0.2.aar/23c42f8872fa735b45ceb37fc3a12a40/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-dots-1.0.2.aar/23c42f8872fa735b45ceb37fc3a12a40/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-dots-1.0.2.aar/6a592f41b99e10ccab4b48749607aefc/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-dots-1.0.2.aar/6a592f41b99e10ccab4b48749607aefc/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loading-dots-1.0.2.aar/6a592f41b99e10ccab4b48749607aefc/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

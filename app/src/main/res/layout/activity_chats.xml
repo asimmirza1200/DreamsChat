@@ -49,19 +49,21 @@
                 android:layout_marginLeft="12dp"
                 android:layout_alignParentRight="true"
                 android:padding="4dp"
+
                 android:src="@drawable/ic_cooking"
-                android:visibility="visible" />
+                android:visibility="gone" />
             <ImageView
                 android:id="@+id/addsubGroup"
                 android:layout_width="@dimen/_50sdp"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="12dp"
+
                 android:layout_marginLeft="12dp"
                 android:layout_toLeftOf="@+id/ivPostRecipe"
                 android:padding="4dp"
                 android:src="@drawable/ic_add"
-                android:visibility="visible" />
+                android:visibility="gone" />
             <ImageView
                 android:id="@+id/callVideo"
                 android:layout_width="wrap_content"
@@ -210,6 +212,7 @@
         </RelativeLayout>
 
         <LinearLayout
+
             android:id="@+id/sendContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -270,7 +273,18 @@
                 android:tint="@color/border_red" />
 
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:id="@+id/expired"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Challenge time has been expired. You ca'nt send message"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layout_chat_attachment_LLY"

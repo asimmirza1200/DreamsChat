@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.getkeepsafe.relinker:relinker:1.2.2@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/relinker-1.2.2.aar/aae2eb8fb73ec8d62e9a5fba7d83cca6/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/relinker-1.2.2.aar/aae2eb8fb73ec8d62e9a5fba7d83cca6/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/relinker-1.2.2.aar/aae2eb8fb73ec8d62e9a5fba7d83cca6/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/relinker-1.2.2.aar/02603659d66537d1c5fe093ddd9feb83/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/relinker-1.2.2.aar/02603659d66537d1c5fe093ddd9feb83/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/relinker-1.2.2.aar/02603659d66537d1c5fe093ddd9feb83/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

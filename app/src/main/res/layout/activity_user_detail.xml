@@ -84,7 +84,7 @@
                                 android:singleLine="true"
                                 android:text="Emotion"
                                 android:textColor="@android:color/white"
-                                android:textSize="12sp"
+                                android:textSize="@dimen/_14sdp"
                                 android:visibility="visible" />
                         </LinearLayout>
 

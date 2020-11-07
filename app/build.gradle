@@ -10,11 +10,19 @@ repositories {
 }
 
 android {
+    signingConfigs {
+        dsd {
+            storeFile file('G:\\AsimMirzaAndroid\\DigiCom\\DreamsChat (1)\\DreamsChat\\app\\release.jks')
+            storePassword 'dreamchat'
+            keyAlias 'dreamchat'
+            keyPassword 'dreamchat'
+        }
+    }
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }
-    dataBinding{
+    dataBinding {
         enabled true
     }
     compileSdkVersion 28
@@ -26,6 +34,7 @@ android {
         versionName "1.8"
         multiDexEnabled true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        signingConfig signingConfigs.dsd
     }
     buildTypes {
         release {
@@ -91,6 +100,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.jakewharton:butterknife:9.0.0-rc2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc2'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.daasuu:animateHorizontalProgressBar:0.2.4'
@@ -113,6 +123,9 @@ dependencies {
     implementation 'com.github.adrielcafe:AndroidAudioConverter:0.0.8'
     annotationProcessor 'com.google.cloud:google-cloud-translate:1.12.0'
     implementation 'com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1'
+    implementation 'com.crowdfire.cfalertdialog:cfalertdialog:1.1.0'
+    implementation 'com.github.Kunzisoft:Android-SwitchDateTimePicker:2.0'
+
 }
 tasks.withType(Javadoc) {
     options.addStringOption('Xdoclint:none', '-quiet')

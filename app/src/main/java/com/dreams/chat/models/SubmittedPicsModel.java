@@ -1,6 +1,8 @@
 package com.dreams.chat.models;
 
-public class SubmittedPicsModel {
+import java.io.Serializable;
+
+public class SubmittedPicsModel implements Serializable {
     String picture_url;
     public String getPicture_url() {
         return picture_url;
@@ -14,5 +16,6 @@ public class SubmittedPicsModel {
         this.picture_url = picture_url;
     }
 
-
+    public SubmittedPicsModel() {
+    }
 }

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.adrielcafe:ffmpeg-android-java:2a627f6ecd@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ffmpeg-android-java-2a627f6ecd.aar/9fec029c0d123b1ac0f0065ce3bb2932/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ffmpeg-android-java-2a627f6ecd.aar/9fec029c0d123b1ac0f0065ce3bb2932/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ffmpeg-android-java-2a627f6ecd.aar/9fec029c0d123b1ac0f0065ce3bb2932/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ffmpeg-android-java-2a627f6ecd.aar/b88544eb5432884b731074ac44968ed3/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ffmpeg-android-java-2a627f6ecd.aar/b88544eb5432884b731074ac44968ed3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ffmpeg-android-java-2a627f6ecd.aar/b88544eb5432884b731074ac44968ed3/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

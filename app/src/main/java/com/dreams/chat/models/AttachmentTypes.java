@@ -20,8 +20,9 @@ public class AttachmentTypes {
   public static final int NONE_TEXT = 6;
   public static final int NONE_TYPING = 7;
   public static final int RECORDING = 8;
+  public static final int RECIPE = 9;
 
-  @IntDef({CONTACT, VIDEO, IMAGE, AUDIO, LOCATION, DOCUMENT, NONE_TEXT, NONE_TYPING, RECORDING})
+  @IntDef({CONTACT, VIDEO, IMAGE, AUDIO, LOCATION, DOCUMENT, NONE_TEXT, NONE_TYPING, RECORDING,RECIPE})
   @Retention(RetentionPolicy.SOURCE)
   public @interface AttachmentType {
   }
@@ -46,6 +47,8 @@ public class AttachmentTypes {
         return "none_typing";
       case RECORDING:
         return "Recording";
+      case RECIPE:
+        return "Recipe";
       default:
         return "none";
     }

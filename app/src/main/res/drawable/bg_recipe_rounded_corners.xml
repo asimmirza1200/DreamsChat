@@ -1,8 +1,17 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <solid android:color="@android:color/holo_red_light" />
-
-    <corners
-        android:radius="@dimen/_15sdp"
-        />
-</shape>
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <gradient
+                android:angle="180"
+                android:startColor="#FD7D6D"
+                android:centerColor="#FB7F73"
+                android:endColor="#F1699B"
+                android:type="linear" />
+            <corners android:bottomRightRadius="@dimen/_30sdp"
+                android:bottomLeftRadius="@dimen/_30sdp"
+                android:topRightRadius="@dimen/_30sdp"
+                android:topLeftRadius="@dimen/_30sdp"/>
+        </shape>
+    </item>
+</selector>

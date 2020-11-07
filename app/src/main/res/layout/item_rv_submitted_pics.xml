@@ -7,12 +7,14 @@
     <androidx.cardview.widget.CardView
         app:cardElevation="@dimen/_10sdp"
         android:layout_width="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_15sdp">
 
         <ImageView
             android:id="@+id/ivSubmittedPics"
-            android:layout_width="180dp"
+            android:layout_width="100dp"
+            android:scaleType="centerCrop"
             android:layout_height="120dp"
             android:src="@drawable/bg_logo" />
     </androidx.cardview.widget.CardView>

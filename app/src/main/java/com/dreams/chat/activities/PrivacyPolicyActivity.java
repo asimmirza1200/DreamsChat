@@ -32,7 +32,7 @@ public class PrivacyPolicyActivity extends AppCompatActivity {
         findViewById(R.id.accept).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = ChatActivity.newIntent(getApplicationContext(), null, Constants.maingroup);
+                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
 
                     startActivity(intent);
 

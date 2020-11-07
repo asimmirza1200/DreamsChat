@@ -182,7 +182,7 @@ public class MainActivity extends BaseActivity implements HomeIneractor, OnUserG
     private void setupViewPager() {
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 //        adapter.addFrag(new MyGroupsFragment(MainActivity.this), "Public Groups");
-        adapter.addFrag(new MyGroupsFragment(MainActivity.this), "Sub Groups");
+        adapter.addFrag(new MyGroupsFragment(MainActivity.this), "Challenges");
         // adapter.addFrag(new MyStatusFragment(), "Status");
 //        adapter.addFrag(new MyStatusFragmentNew(), "Status");
        // adapter.addFrag(new MyCallsFragment(), "Calls");
