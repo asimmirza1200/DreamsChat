@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_margin="@dimen/_10sdp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_60sdp"
         android:layout_marginStart="20dp"
@@ -14,18 +14,19 @@
         android:background="@drawable/message_item_border">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginStart="@dimen/_35sdp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
                 android:layout_marginLeft="@dimen/_20sdp"
+                android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/_12sdp"
@@ -34,19 +35,35 @@
 
             <TextView
                 android:id="@+id/status"
-                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
+
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:gravity="center_vertical"
                 tools:text="Now" />
 
         </LinearLayout>
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:gravity="center"
+            tools:text="" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/type"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:background="@drawable/starselecter"
+            android:scaleType="centerCrop" />
 
 
 
-
-    </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/userImage_RLY"

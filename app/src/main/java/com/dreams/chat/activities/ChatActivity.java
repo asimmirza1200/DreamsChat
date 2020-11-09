@@ -57,6 +57,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -384,14 +386,17 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
                         AlertDialog alertDialog = dialogBuilder.create();
                         EditText comments = dialogLayout.findViewById(R.id.Reviews);
                         Button donate = dialogLayout.findViewById(R.id.donate);
-                        RatingBar rating = dialogLayout.findViewById(R.id.rating);
+                        EditText rating = dialogLayout.findViewById(R.id.rating);
+                        RadioGroup radiogroup = dialogLayout.findViewById(R.id.radiogroup);
+
                         donate.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 if (!comments.getText().toString().isEmpty()){
                                     Helper helper = new Helper(getApplicationContext());
                                     User userMe = helper.getLoggedInUser();
-                                    recipeModel.getReviewsList().add(new Reviews(comments.getText().toString(),String.valueOf(rating.getRating()),userMe.getId()));
+                                    RadioButton radioButton= (RadioButton)dialogLayout.findViewById(radiogroup.getCheckedRadioButtonId());
+                                    recipeModel.getReviewsList().add(new Reviews(comments.getText().toString(),String.valueOf(rating.getText().toString()),userMe.getId(),userMe.getImage(),radioButton.getText().toString()));
                                     FirebaseDatabase.getInstance().getReference().child("public").child(recipeModel.getKey()).child("reviewsList").setValue(recipeModel.getReviewsList()).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -420,7 +425,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
 
                                     Helper helper = new Helper(getApplicationContext());
                                     User userMe = helper.getLoggedInUser();
-                                    recipeModel.getReviewsList().add(new Reviews("leave","leave",userMe.getId()));
+                                    recipeModel.getReviewsList().add(new Reviews("leave","leave",userMe.getId(),userMe.getImage(),"leave"));
                                     FirebaseDatabase.getInstance().getReference().child("public").child(recipeModel.getKey()).child("reviewsList").setValue(recipeModel.getReviewsList()).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {

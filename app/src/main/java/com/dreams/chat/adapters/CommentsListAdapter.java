@@ -55,6 +55,19 @@ public class CommentsListAdapter extends RecyclerView.Adapter<CommentsListAdapte
         }
         viewHolder.userName.setText(user.getId());
         viewHolder.status.setText(user.getComments());
+        viewHolder.rating.setText(user.getRate());
+        if (user.getType().equalsIgnoreCase("star")){
+            viewHolder.type.setImageResource(R.drawable.star);
+
+        }else if (user.getType().equalsIgnoreCase("heart")) {
+            viewHolder.type.setImageResource(R.drawable.heart);
+        }
+        else if (user.getType().equalsIgnoreCase("apple")) {
+            viewHolder.type.setImageResource(R.drawable.apple);
+        }else if (user.getType().equalsIgnoreCase("flame")) {
+            viewHolder.type.setImageResource(R.drawable.fire);
+        }
+            viewHolder.userName.setText(user.getId());
 
 
 
@@ -100,17 +113,19 @@ public class CommentsListAdapter extends RecyclerView.Adapter<CommentsListAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView userImage;
+        private ImageView userImage,type;
         private ImageView audioCall;
         private ImageView videoCall;
-        private TextView userName;
+        private TextView userName,rating;
         private TextView status;
         private ProgressBar myProgressBar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            type = itemView.findViewById(R.id.type);
             userImage = itemView.findViewById(R.id.userImage);
+
+            rating = itemView.findViewById(R.id.rating);
             userName = itemView.findViewById(R.id.userName);
             status = itemView.findViewById(R.id.status);
             audioCall = itemView.findViewById(R.id.audioCall);

@@ -277,7 +277,7 @@
             android:layout_width="match_parent"
             android:gravity="center"
             android:id="@+id/expired"
-            android:visibility="visible"
+            android:visibility="gone"
             android:orientation="vertical"
             android:layout_marginBottom="@dimen/_30sdp"
             android:layout_height="wrap_content">

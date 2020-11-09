@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:gravity="center"
-    android:layout_margin="@dimen/_10sdp">
+    android:gravity="bottom"
+    android:layout_margin="5dp">
     <androidx.cardview.widget.CardView
         android:id="@+id/CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="#ffffff"
-        app:contentPadding="@dimen/_10sdp"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp">
         <LinearLayout
@@ -40,37 +39,86 @@
         android:id="@+id/Reviews"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:paddingLeft="@dimen/_10sdp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/bg_red_border"
         android:hint="Enter Review"
       android:layout_margin="10dp"
         android:textAlignment="center"
         android:singleLine="false"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:orientation="horizontal">
-        <RatingBar
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Select Donate Icon"
+            android:textColor="#111111"
+            android:layout_marginStart="20dp" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:id="@+id/radiogroup"
+            android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/text4"
+
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_margin="5dp"
             android:gravity="center"
-            android:id="@+id/rating"
-            android:numStars="5"
-            android:rating="5"
             android:layout_gravity="center"
-            android:textSize="18sp" />
+            android:text="star"
+            android:textColor="@android:color/transparent"
+            android:background="@drawable/starselecter"
+            android:button="@null"
 
-        </LinearLayout>
+            android:textSize="18sp" />
+            <RadioButton
+                android:id="@+id/text1"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:checked="false"
+                android:text="apple"
+                android:textColor="@android:color/transparent"
+                android:layout_gravity="center"
+                android:background="@drawable/appletselecter"
+                android:button="@null"
+
+                android:textSize="18sp" />
+            <RadioButton
+                android:id="@+id/text2"
+
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="heart"
+                android:textColor="@android:color/transparent"                android:checked="false"
+
+                android:background="@drawable/heartselecter"
+                android:button="@null"
+                android:textSize="18sp" />
+            <RadioButton
+                android:id="@+id/text3"
+
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="flame"
+                android:textColor="@android:color/transparent"                android:checked="false"
+                android:background="@drawable/fireselecter"
+                android:button="@null"
+                android:textSize="18sp" />
+        </RadioGroup>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Quantity"
             android:textColor="#111111"
-            android:visibility="gone"
             android:layout_marginStart="20dp" />
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,12 +128,12 @@
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="120"
             android:paddingStart="20dp"
-            android:visibility="gone"
+            android:id="@+id/rating"
             android:paddingEnd="20dp"
             android:gravity="center"
             android:paddingTop="5dp"
@@ -97,10 +145,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:gravity="center"
+            android:gravity="end"
             android:orientation="horizontal">
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="Donate"
                 android:id="@+id/donate"

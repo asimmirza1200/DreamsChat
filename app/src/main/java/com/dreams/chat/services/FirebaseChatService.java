@@ -26,6 +26,7 @@ import android.util.Log;
 import com.dreams.chat.BaseApplication;
 import com.dreams.chat.R;
 import com.dreams.chat.activities.ChatActivity;
+import com.dreams.chat.activities.HomeActivity;
 import com.dreams.chat.models.Attachment;
 import com.dreams.chat.models.AttachmentList;
 import com.dreams.chat.models.AttachmentTypes;
@@ -412,7 +413,7 @@ public class FirebaseChatService extends Service {
 
     private void notifyNewGroup(Group group) {
         // Construct the Intent you want to end up at
-        Intent chatActivity = ChatActivity.newIntent(this, null, group);
+        Intent chatActivity =new Intent(getApplicationContext(), HomeActivity.class);
         // Construct the PendingIntent for your Notification
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         // This uses android:parentActivityName and
@@ -1051,9 +1052,10 @@ public class FirebaseChatService extends Service {
             // Construct the Intent you want to end up at
             Intent chatActivity = null;// = ChatActivity.newIntent(this, null,  ? chat.getGroup() : chat.getUser());
             if (userOrGroupId.startsWith(Helper.GROUP_PREFIX))
-                chatActivity = ChatActivity.newIntent(this, null, chat[0].getGroup());
+                chatActivity = new Intent(getApplicationContext(), HomeActivity.class);
+
             else
-                chatActivity = ChatActivity.newIntent(this, null, chat[0].getUser());
+                chatActivity = new Intent(getApplicationContext(), HomeActivity.class);
             // Construct the PendingIntent for your Notification
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
             // This uses android:parentActivityName and

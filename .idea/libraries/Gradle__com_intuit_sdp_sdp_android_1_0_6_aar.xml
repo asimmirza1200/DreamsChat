@@ -4,6 +4,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sdp-android-1.0.6.aar/fc21f1ae7e828bb75d15941f5cc3a8f2/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sdp-android-1.0.6.aar/fc21f1ae7e828bb75d15941f5cc3a8f2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sdp-android-1.0.6.aar/fc21f1ae7e828bb75d15941f5cc3a8f2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sdp-android-1.0.6.aar/d75d3079630d2fd9ee3538e5cb0c2e33/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sdp-android-1.0.6.aar/d75d3079630d2fd9ee3538e5cb0c2e33/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sdp-android-1.0.6.aar/d75d3079630d2fd9ee3538e5cb0c2e33/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

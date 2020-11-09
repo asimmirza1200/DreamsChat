@@ -11,18 +11,42 @@
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         android:orientation="horizontal"
+        android:gravity="center"
         android:layout_alignParentTop="true"
-        android:gravity="center">
+        >
 
         <TextView
             android:id="@+id/toptext"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_margin="5dp"/>
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="0dp"
+            android:visibility="gone"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:text="shakir"
+            android:gravity="right"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_margin="5dp"/>
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:maxHeight="30dp"
+            android:visibility="gone"
+            android:minHeight="20dp"
+            android:id="@+id/ratingimg"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/star"
+            />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

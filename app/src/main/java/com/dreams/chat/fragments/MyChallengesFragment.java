@@ -127,7 +127,7 @@ public class MyChallengesFragment extends Fragment {
         recyclerView.setEmptyTextView(emptyTextView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        FirebaseDatabase.getInstance().getReference().child("public").orderByChild("id").equalTo(userMe.getId())
+        FirebaseDatabase.getInstance().getReference().child("public")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -156,7 +156,7 @@ public class MyChallengesFragment extends Fragment {
             @Override
             public void onRefresh() {
 
-                FirebaseDatabase.getInstance().getReference().child("public").orderByChild("id").equalTo(userMe.getId())
+                FirebaseDatabase.getInstance().getReference().child("public")
                         .addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -196,7 +196,7 @@ public class MyChallengesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        FirebaseDatabase.getInstance().getReference().child("public").orderByChild("id").equalTo(userMe.getId())
+        FirebaseDatabase.getInstance().getReference().child("public")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

@@ -8,10 +8,10 @@
     <item
         android:id="@+id/navigation_sms"
         android:icon="@drawable/challenge"
-        android:title="My challenges" />
+        android:title="All challenges" />
 
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_cooking"
-        android:title="My Recipe" />
+        android:title="All Recipe" />
 </menu>

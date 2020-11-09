@@ -337,6 +337,11 @@ public class HomeActivity extends BaseActivity implements HomeIneractor {
     }
 
     @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
     }

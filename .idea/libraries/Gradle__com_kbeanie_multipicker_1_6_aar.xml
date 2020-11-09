@@ -4,6 +4,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-multipicker-1.6.aar/1d53712fa8b8fb8f7ea0091db4e0e0e4/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-multipicker-1.6.aar/1d53712fa8b8fb8f7ea0091db4e0e0e4/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-multipicker-1.6.aar/1d53712fa8b8fb8f7ea0091db4e0e0e4/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-multipicker-1.6.aar/b098114ae7c62d3565a56503c079e23d/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-multipicker-1.6.aar/b098114ae7c62d3565a56503c079e23d/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-multipicker-1.6.aar/b098114ae7c62d3565a56503c079e23d/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

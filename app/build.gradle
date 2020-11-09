@@ -12,7 +12,7 @@ repositories {
 android {
     signingConfigs {
         dsd {
-            storeFile file('G:\\AsimMirzaAndroid\\DigiCom\\DreamsChat (1)\\DreamsChat\\app\\release.jks')
+            storeFile file('E:\\flutterproject\\DreamsChat\\app\\release.jks')
             storePassword 'dreamchat'
             keyAlias 'dreamchat'
             keyPassword 'dreamchat'

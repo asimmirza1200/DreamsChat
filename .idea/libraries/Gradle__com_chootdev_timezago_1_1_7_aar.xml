@@ -4,6 +4,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-timezago-1.1.7.aar/880af37283377597c1f237b6985ffb80/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-timezago-1.1.7.aar/880af37283377597c1f237b6985ffb80/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-timezago-1.1.7.aar/880af37283377597c1f237b6985ffb80/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-timezago-1.1.7.aar/2abdc497c920603eac346122181b9b12/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-timezago-1.1.7.aar/2abdc497c920603eac346122181b9b12/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-timezago-1.1.7.aar/2abdc497c920603eac346122181b9b12/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

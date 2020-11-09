@@ -4,6 +4,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-realm-android-library-5.4.0.aar/436fd56a9c58281a73e501a9c18ba9d0/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-realm-android-library-5.4.0.aar/436fd56a9c58281a73e501a9c18ba9d0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-realm-android-library-5.4.0.aar/436fd56a9c58281a73e501a9c18ba9d0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-realm-android-library-5.4.0.aar/e92b01692cd5583e35709becf9152def/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-realm-android-library-5.4.0.aar/e92b01692cd5583e35709becf9152def/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-realm-android-library-5.4.0.aar/e92b01692cd5583e35709becf9152def/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

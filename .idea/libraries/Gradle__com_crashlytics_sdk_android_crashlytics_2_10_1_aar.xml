@@ -4,6 +4,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-crashlytics-2.10.1.aar/9eee5a42b07cb69a92c694e8e6a037fb/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-crashlytics-2.10.1.aar/9eee5a42b07cb69a92c694e8e6a037fb/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-crashlytics-2.10.1.aar/9eee5a42b07cb69a92c694e8e6a037fb/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-crashlytics-2.10.1.aar/c5178a087bfca3cb13b03c69c4b7cd44/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-crashlytics-2.10.1.aar/c5178a087bfca3cb13b03c69c4b7cd44/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-crashlytics-2.10.1.aar/c5178a087bfca3cb13b03c69c4b7cd44/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

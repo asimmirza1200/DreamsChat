@@ -3,7 +3,7 @@
 xmlns:app="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@drawable/chat_bg">
+>
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -48,7 +48,7 @@ android:background="@drawable/chat_bg">
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:text="@string/app_name"
-                        android:textColor="@android:color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="@dimen/_16sdp" />
 
                 </LinearLayout>

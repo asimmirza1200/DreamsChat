@@ -47,6 +47,7 @@ import com.dreams.chat.activities.MyPostsActivity;
 import com.dreams.chat.activities.SignInActivity;
 import com.dreams.chat.models.Group;
 import com.dreams.chat.models.RecipeModel;
+import com.dreams.chat.models.Reviews;
 import com.dreams.chat.models.SubmittedPicsModel;
 import com.dreams.chat.models.User;
 import com.dreams.chat.utils.ConfirmationDialogFragment;
@@ -120,7 +121,7 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
                if (!writeComment.getText().toString().isEmpty()){
                    Helper helper = new Helper(context);
                    User userMe = helper.getLoggedInUser();
-                   commentsList.add(new Comments(userMe.getNameToDisplay(),writeComment.getText().toString(),userMe.getImage()));
+                   commentsList.add(new Comments(userMe.getNameToDisplay(),writeComment.getText().toString(),userMe.getImage(),"",""));
                    FirebaseDatabase.getInstance().getReference().child("public").child(recipe_list.get(i).getKey()).child("commentsArrayList").setValue(commentsList).addOnSuccessListener(new OnSuccessListener<Void>() {
                        @Override
                        public void onSuccess(Void aVoid) {
@@ -163,6 +164,80 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
 
         // show the popup at bottom of the screen and set some margin at bottom ie,
         popWindow.showAtLocation(v, Gravity.BOTTOM, 0,100);
+    }
+    public void onShowPopupReview(View v, ArrayList<Reviews> commentsList, int i){
+
+        LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        // inflate the custom popup layout
+        View inflatedView = layoutInflater.inflate(R.layout.popup_layout, null, false);
+        // find the ListView in the popup layout
+        RecyclerView listView = (RecyclerView) inflatedView.findViewById(R.id.commentsListView);
+        LinearLayout headerView = (LinearLayout)inflatedView.findViewById(R.id.headerLayout);
+        LinearLayout headerView1 = (LinearLayout)inflatedView.findViewById(R.id.comment_section);
+        headerView1.setVisibility(View.GONE);
+        EditText writeComment = (EditText) inflatedView.findViewById(R.id.writeComment);
+
+        TextView toptext = (TextView) inflatedView.findViewById(R.id.toptext);
+        ImageView img=inflatedView.findViewById(R.id.ratingimg);
+        img.setVisibility(View.VISIBLE);
+        TextView toptext1=(TextView) inflatedView.findViewById(R.id.rating);
+        toptext1.setVisibility(View.VISIBLE);
+        double rating=0.0;
+        for (int j=0;j<commentsList.size();j++)
+        {
+            if (commentsList.get(j).getRating().equals("leave"))
+            {
+                commentsList.remove(j);
+            }
+            else
+            {
+                rating= rating+Double.parseDouble(commentsList.get(j).getRating());
+
+            }
+        }
+
+        toptext.setText(commentsList.size()+" People review on this challage ");
+        toptext1.setText(String.valueOf(rating/commentsList.size()));
+        Button send = (Button) inflatedView.findViewById(R.id.send);
+
+        // get device size
+        Display display = ((Activity)context).getWindowManager().getDefaultDisplay();
+        final Point size = new Point();
+        display.getSize(size);
+//        mDeviceHeight = size.y;
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int width = displayMetrics.widthPixels;
+        int height = displayMetrics.heightPixels;
+
+
+        // fill the data to the list items
+        setSimpleList2(listView,commentsList);
+
+
+        // set height depends on the device size
+        PopupWindow popWindow = new PopupWindow(inflatedView, width, height - 50, true);
+        // set a background drawable with rounders corners
+        popWindow.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.popup_bg));
+
+        popWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NEEDED);
+        popWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+
+        popWindow.setAnimationStyle(R.style.PopupAnimation);
+
+        // show the popup at bottom of the screen and set some margin at bottom ie,
+        popWindow.showAtLocation(v, Gravity.BOTTOM, 0,100);
+    }
+    void setSimpleList2(RecyclerView listView, ArrayList<Reviews> reviewsArrayList){
+
+        ArrayList<Comments> commentsList=new ArrayList<>();
+        for (int j = 0; j < reviewsArrayList.size(); j++) {
+            commentsList.add(new Comments(reviewsArrayList.get(j).getId(),reviewsArrayList.get(j).getComment(),reviewsArrayList.get(j).getImage(),reviewsArrayList.get(j).getRating(),reviewsArrayList.get(j).getType()));
+
+
+        }
+
+        listView.setAdapter(new CommentsListAdapter(context,commentsList));
     }
 
     void setSimpleList(RecyclerView listView, ArrayList<Comments> commentsList){
@@ -349,6 +424,7 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
             Helper helper = new Helper(context);
 
             User userMe = helper.getLoggedInUser();
+
             if (userMe.getId().equals(recipe_list.get(i).getName())) {
                 recipeViewHolder.more.setVisibility(View.VISIBLE);
             }else {
@@ -364,8 +440,10 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
             }
             if (check){
                 recipeViewHolder.acceptchallenge.setVisibility(View.GONE);
+                recipeViewHolder.Seeinfo.setVisibility(View.VISIBLE);
             }else {
                 recipeViewHolder.acceptchallenge.setVisibility(View.VISIBLE);
+                recipeViewHolder.Seeinfo.setVisibility(View.GONE);
 
             }
             recipeViewHolder.more.setOnClickListener(new View.OnClickListener() {
@@ -435,14 +513,17 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
                         }
                         if (status) {
                             recipeViewHolder.acceptchallenge.setText("Go To Challenge");
+                            //recipeViewHolder.Seeinfo.setVisibility(View.GONE);
 
                         }else {
                             recipeViewHolder.acceptchallenge.setText("Accept Challenge");
+                          //  recipeViewHolder.Seeinfo.setVisibility(View.GONE);
 
                         }
 
                     } else {
                         recipeViewHolder.acceptchallenge.setText("Accept Challenge");
+                        //recipeViewHolder.Seeinfo.setVisibility(View.GONE);
 
                     }
 
@@ -453,7 +534,13 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
 
                 }
             });
+            recipeViewHolder.Seeinfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onShowPopupReview(recipeViewHolder.Seeinfo,recipe_list.get(i).getReviewsList(),i);
 
+                }
+            });
 
 
 
@@ -534,7 +621,7 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
         return formatter.format(calendar.getTime());
     }
     public class RecipeViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvDate,endtvDate, tvType, tvContent, tvCommentsCount, tvLikeCount,acceptchallenge;
+        TextView tvName, tvDate,endtvDate, tvType, tvContent, tvCommentsCount, tvLikeCount,acceptchallenge,Seeinfo;
         ImageView ivProfilePicture, more,ivComments, ivLike, ivShare;
         RecyclerView rvSubmittedPics;
 
@@ -543,6 +630,7 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
             tvDate = itemView.findViewById(R.id.tvDate);
             endtvDate = itemView.findViewById(R.id.endtvDate);
             acceptchallenge = itemView.findViewById(R.id.accept);
+            Seeinfo=itemView.findViewById(R.id.SeeInfo);
             ivComments = itemView.findViewById(R.id.ivComments);
             ivLike = itemView.findViewById(R.id.ivLike);
             ivShare = itemView.findViewById(R.id.ivShare);

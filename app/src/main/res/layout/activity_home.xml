@@ -26,9 +26,9 @@ android:layout_height="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/windowBackground"
-        app:itemTextColor="@color/windowBackground"
+        android:background="@color/textColorWhite"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
         app:menu="@menu/menu"
         />
 
