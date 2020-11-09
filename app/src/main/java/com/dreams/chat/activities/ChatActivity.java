@@ -16,6 +16,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -31,6 +32,7 @@ import android.os.Vibrator;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -45,13 +47,17 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -59,6 +65,7 @@ import android.widget.Toast;
 
 import com.dreams.chat.BaseApplication;
 import com.dreams.chat.R;
+import com.dreams.chat.adapters.Comments;
 import com.dreams.chat.adapters.MessageAdapter;
 import com.dreams.chat.interfaces.OnMessageItemClick;
 import com.dreams.chat.models.Attachment;
@@ -69,6 +76,7 @@ import com.dreams.chat.models.DownloadFileEvent;
 import com.dreams.chat.models.Group;
 import com.dreams.chat.models.Message;
 import com.dreams.chat.models.RecipeModel;
+import com.dreams.chat.models.Reviews;
 import com.dreams.chat.models.SendRecipeChatModel;
 import com.dreams.chat.models.Status;
 import com.dreams.chat.models.SubmittedPicsModel;
@@ -91,10 +99,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -361,6 +371,65 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
             if (current.after(date)){
                 sendContainer.setVisibility(View.GONE);
                 expired.setVisibility(View.VISIBLE);
+                Button donatestar = findViewById(R.id.donate);
+                Button leave = findViewById(R.id.leave);
+
+                donatestar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ChatActivity.this);
+                        LayoutInflater inflater = getLayoutInflater();
+                        View dialogLayout = inflater.inflate(R.layout.reviewdialog, null);
+                        dialogBuilder.setView(dialogLayout);
+                        AlertDialog alertDialog = dialogBuilder.create();
+                        EditText comments = dialogLayout.findViewById(R.id.Reviews);
+                        Button donate = dialogLayout.findViewById(R.id.donate);
+                        RatingBar rating = dialogLayout.findViewById(R.id.rating);
+                        donate.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (!comments.getText().toString().isEmpty()){
+                                    Helper helper = new Helper(getApplicationContext());
+                                    User userMe = helper.getLoggedInUser();
+                                    recipeModel.getReviewsList().add(new Reviews(comments.getText().toString(),String.valueOf(rating.getRating()),userMe.getId()));
+                                    FirebaseDatabase.getInstance().getReference().child("public").child(recipeModel.getKey()).child("reviewsList").setValue(recipeModel.getReviewsList()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            comments.setText("");
+                                            alertDialog.dismiss();
+                                            finish();
+                                        }
+                                    });
+                                }else {
+                                    Toast.makeText(getApplicationContext(), "Enter Comment", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                        //set rounded dialog
+                        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            alertDialog.create();
+                        }
+
+                        alertDialog.show();
+                    }
+                });
+                leave.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                                    Helper helper = new Helper(getApplicationContext());
+                                    User userMe = helper.getLoggedInUser();
+                                    recipeModel.getReviewsList().add(new Reviews("leave","leave",userMe.getId()));
+                                    FirebaseDatabase.getInstance().getReference().child("public").child(recipeModel.getKey()).child("reviewsList").setValue(recipeModel.getReviewsList()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            finish();
+                                        }
+                                    });
+                                }
+                });
+
 
             }else {
                 expired.setVisibility(View.GONE);

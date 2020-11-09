@@ -84,6 +84,16 @@ public class RecipeModel implements Serializable {
     long date;
     String type,id,key;
 
+    public ArrayList<Reviews> getReviewsList() {
+        return reviewsList;
+    }
+
+    public void setReviewsList(ArrayList<Reviews> reviewsList) {
+        this.reviewsList = reviewsList;
+    }
+
+    ArrayList<Reviews> reviewsList=new ArrayList<>();;
+
     String content;
     String comments_count;
     String likes;

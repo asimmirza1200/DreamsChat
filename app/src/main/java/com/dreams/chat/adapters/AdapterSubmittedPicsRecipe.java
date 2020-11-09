@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import io.realm.internal.IOException;
 
 import android.content.Intent;
+
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
@@ -354,7 +355,19 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
                 recipeViewHolder.more.setVisibility(View.GONE);
 
             }
+            boolean check=false;
 
+            for (int j = 0; j < recipe_list.get(i).getReviewsList().size(); j++) {
+                if (recipe_list.get(i).getReviewsList().get(j).getId().equals(userMe.getId())){
+                    check=true;
+                }
+            }
+            if (check){
+                recipeViewHolder.acceptchallenge.setVisibility(View.GONE);
+            }else {
+                recipeViewHolder.acceptchallenge.setVisibility(View.VISIBLE);
+
+            }
             recipeViewHolder.more.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

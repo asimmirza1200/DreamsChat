@@ -196,7 +196,31 @@ public class MyChallengesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        FirebaseDatabase.getInstance().getReference().child("public").orderByChild("id").equalTo(userMe.getId())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        List<RecipeModel> list=new ArrayList<>();
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            RecipeModel recipe = snapshot.getValue(RecipeModel.class);//I'm assuming you have a Recipe class
+                            if (!recipe.getType().equalsIgnoreCase("recipe")){
+                                recipe.setKey(snapshot.getKey());
+                                list.add(recipe);
 
+                            }
+                        }
+                        AdapterSubmittedPicsRecipe postadapter = new AdapterSubmittedPicsRecipe(list, getContext());
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        recyclerView.setAdapter(postadapter);
+                        mySwipeRefreshLayout.setRefreshing(false);
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        mySwipeRefreshLayout.setRefreshing(false);
+
+                    }
+                });
     }
 
     @Override
