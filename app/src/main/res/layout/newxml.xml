@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/rlHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:padding="@dimen/_10sdp"
+        android:layout_margin="20dp"
+        android:layout_alignParentTop="true">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/image"
+            app:cardCornerRadius="@dimen/_50sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ivProfilePicture"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/bg_logo" />
+        </androidx.cardview.widget.CardView>
+        <RelativeLayout
+            android:id="@+id/rlNameDate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_toRightOf="@+id/image"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/senderName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Matt Maxwell"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/senderName"
+                android:text="19 Aug"
+                android:visibility="visible"
+                android:textColor="@color/transparent_black"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSubmittedPics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvType"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    <View
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@+id/rvSubmittedPics"
+        android:id="@+id/vw"
+        android:background="@color/textColorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+</LinearLayout>
