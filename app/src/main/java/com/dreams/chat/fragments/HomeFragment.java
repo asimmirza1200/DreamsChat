@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView =view.findViewById(R.id.recycler_view);
-        createPost =view.findViewById(R.id.createpost);
+       // createPost =view.findViewById(R.id.createpost);
         ImageView users_image = view.findViewById(R.id.users_image);
 
         users_image.setOnClickListener(new View.OnClickListener() {
@@ -98,29 +98,29 @@ public class HomeFragment extends Fragment {
                 popup.show();
             }
         });
-        createPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CFAlertDialog.Builder builder = new CFAlertDialog.Builder(getContext());
-                builder.setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT);
-                builder.setTitle("Select Type!");
-                builder.setItems(new String[]{"Create Challenge", "Add Recipe"}, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int index) {
-                        if (index==0){
-                            Intent recipe_intent=new Intent(getContext(), CreateChallengeActivity.class);
-                            startActivity(recipe_intent);
-                        }else {
-                            Intent recipe_intent=new Intent(getContext(), AddRecipeActivity.class);
-                            startActivity(recipe_intent);
-                        }
-                        dialogInterface.dismiss();
-                    }
-                });
-                builder.show();
-            }
-        });
+//        createPost.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                CFAlertDialog.Builder builder = new CFAlertDialog.Builder(getContext());
+//                builder.setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT);
+//                builder.setTitle("Select Type!");
+//                builder.setItems(new String[]{"Create Challenge", "Add Recipe"}, new DialogInterface.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int index) {
+//                        if (index==0){
+//                            Intent recipe_intent=new Intent(getContext(), CreateChallengeActivity.class);
+//                            startActivity(recipe_intent);
+//                        }else {
+//                            Intent recipe_intent=new Intent(getContext(), AddRecipeActivity.class);
+//                            startActivity(recipe_intent);
+//                        }
+//                        dialogInterface.dismiss();
+//                    }
+//                });
+//                builder.show();
+//            }
+//        });
         mySwipeRefreshLayout = view.findViewById(R.id.swipe_refresh_lay);
         mySwipeRefreshLayout.setRefreshing(false);
         mySwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

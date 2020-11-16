@@ -122,18 +122,39 @@
                     android:text="Hi,  want to sha"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_15sdp" />
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_60sdp"
+    android:orientation="horizontal">
                 <TextView
                     android:id="@+id/accept"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_60sdp"
                     android:background="@drawable/bg_recipe_rounded_corners"
                     android:padding="@dimen/_5sdp"
-                    android:text="Accept Challenge"
+                    android:textAlignment="center"
+                    android:text="Join"
+                    android:gravity="center"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/_15sdp" />
+                    android:textSize="@dimen/_10sdp" />
+                <TextView
+                    android:id="@+id/Explore"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/bg_recipe_rounded_corners"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Explore "
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_10sdp" />
+</LinearLayout>
                 <TextView
                     android:id="@+id/SeeInfo"
                     android:layout_width="wrap_content"
@@ -144,9 +165,51 @@
                     android:visibility="gone"
                     android:text="See Result"
                     android:layout_marginTop="@dimen/_30sdp"
-
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_15sdp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="rating"
+                    android:layout_gravity="right"
+                    android:id="@+id/tvrat"
+                    />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/types"
+                    android:visibility="gone"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:scaleType="centerCrop" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/typea"
+                        android:visibility="gone"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:scaleType="centerCrop" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/typef"
+                        android:visibility="gone"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:scaleType="centerCrop" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/typeh"
+                        android:visibility="gone"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:scaleType="centerCrop" />
+                </LinearLayout>
+
 
             </LinearLayout>
             <RelativeLayout
@@ -167,7 +230,6 @@
                     layout="@layout/partial_message_status_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="@dimen/_5sdp" />
             </RelativeLayout>

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/parentLayout"
-    app:cardCornerRadius="@dimen/_10sdp"
+    android:clickable="true"
+
     android:orientation="vertical"
-    android:elevation="@dimen/_5sdp"
-    android:layout_margin="@dimen/_10sdp">
+   >
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
+        android:elevation="@dimen/_5sdp"
+        android:layout_margin="@dimen/_10sdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
@@ -18,7 +20,7 @@
         app:cardElevation="2dp">
 
 
-    </androidx.cardview.widget.CardView>
+
 
     <LinearLayout
         android:orientation="vertical"
@@ -88,6 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
+        android:clickable="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_20sdp"
         android:background="@drawable/bg_recipe_rounded_corners"
@@ -103,8 +106,9 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginRight="@dimen/_40sdp"
         android:gravity="top|left"
+        android:scrollHorizontally="true"
         android:inputType="textMultiLine"
-        android:text="Hi, good day, I prepared this meal an I want to share the recipe"
+        android:text="Hi, good day, I prepared this meal an I want to share the recipe Hi good day I prepared this meal an I want to share the recipe"
         android:textColor="@color/black"
         android:textSize="@dimen/_15sdp" />
 
@@ -204,5 +208,5 @@
                 android:layout_marginEnd="@dimen/_5sdp" />
         </RelativeLayout>
     </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

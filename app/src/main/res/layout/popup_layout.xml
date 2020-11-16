@@ -60,6 +60,7 @@
 
     <LinearLayout
         android:id="@+id/comment_section"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="50dp"
@@ -110,5 +111,14 @@
             android:textSize="@dimen/_14sdp"
             android:textColor="@color/textColorWhite"/>
     </LinearLayout>
+
+
+
+
+
+
+
+
+
 
 </RelativeLayout>

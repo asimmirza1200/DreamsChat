@@ -1,6 +1,8 @@
 package com.dreams.chat.adapters;
 
-public class Comments {
+import java.io.Serializable;
+
+public class Comments implements Serializable {
     String id,comments,image,rate="",type="";
 
 //    public Comments(String id, String comments, String image) {

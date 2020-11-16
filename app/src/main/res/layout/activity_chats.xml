@@ -275,6 +275,29 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/bottombtn"
+            >
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Explore"
+                android:visibility="gone"
+                android:id="@+id/btnexplore"
+                android:layout_margin="@dimen/_5sdp"
+                android:textColor="@color/colorIcon"
+                android:background="@drawable/bg_recipe_rounded_corners"
+
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:gravity="center"
             android:id="@+id/expired"
             android:visibility="gone"

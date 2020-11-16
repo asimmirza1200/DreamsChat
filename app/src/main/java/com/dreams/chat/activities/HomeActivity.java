@@ -252,8 +252,32 @@ public class HomeActivity extends BaseActivity implements HomeIneractor {
                         case R.id.navigation_notifications:
                             openFragment(new MyRecipeFragment());
                             return true;
+                        case R.id.navigation_addchallage:
+                            addchallage();
+                            return true;
                     }
                     return false;
+                }
+
+                private void addchallage() {
+                    CFAlertDialog.Builder builder = new CFAlertDialog.Builder(HomeActivity.this);
+                    builder.setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT);
+                    builder.setTitle("Select Type!");
+                    builder.setItems(new String[]{"Create Challenge", "Add Recipe"}, new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int index) {
+                            if (index==0){
+                                Intent recipe_intent=new Intent(HomeActivity.this, CreateChallengeActivity.class);
+                                startActivity(recipe_intent);
+                            }else {
+                                Intent recipe_intent=new Intent(HomeActivity.this, AddRecipeActivity.class);
+                                startActivity(recipe_intent);
+                            }
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    builder.show();
                 }
             };
 

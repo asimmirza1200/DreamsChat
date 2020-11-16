@@ -1,9 +1,8 @@
 package com.dreams.chat.models;
 
 import java.io.Serializable;
-
 public class Reviews implements Serializable {
-    String comment,rating,id,image,type;
+    String comment,rating="",id,image,type="";
 
     public Reviews(String comment, String rating, String id,String image,String type) {
         this.comment = comment;

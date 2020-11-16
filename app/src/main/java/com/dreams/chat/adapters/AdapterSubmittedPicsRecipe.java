@@ -5,18 +5,26 @@ import android.app.ProgressDialog;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.cardview.widget.CardView;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.realm.internal.IOException;
 
 import android.content.Intent;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
@@ -34,6 +42,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +53,7 @@ import com.dreams.chat.activities.CreateChallengeActivity;
 import com.dreams.chat.activities.EditChallengeActivity;
 import com.dreams.chat.activities.HomeActivity;
 import com.dreams.chat.activities.MyPostsActivity;
+import com.dreams.chat.activities.RecipeActivity;
 import com.dreams.chat.activities.SignInActivity;
 import com.dreams.chat.models.Group;
 import com.dreams.chat.models.RecipeModel;
@@ -74,9 +84,11 @@ import java.util.List;
 
 public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubmittedPicsRecipe.RecipeViewHolder> {
     List<RecipeModel> recipe_list;
+    ArrayList<Reviews> reviewsArrayList;
     Context context;
     View view;
     SubmittedPicsAdapter submittedPicsAdapter;
+    double rating;
 
     public AdapterSubmittedPicsRecipe(List<RecipeModel> recipe_list,
                                       Context context) {
@@ -115,6 +127,16 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
         TextView toptext = (TextView) inflatedView.findViewById(R.id.toptext);
        toptext.setText(commentsList.size()+" Comments and "+recipe_list.get(i).getLikes()+" people  Like this recipe");
         Button send = (Button) inflatedView.findViewById(R.id.send);
+//        Button join=inflatedView.findViewById(R.id.btnjoin);
+//        Button explore=inflatedView.findViewById(R.id.btnexplore);
+//        join.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//            @Override
+//            public void onClick(View v) {
+//                showDaitail();
+//            }
+//        });
+
        send.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
@@ -165,6 +187,8 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
         // show the popup at bottom of the screen and set some margin at bottom ie,
         popWindow.showAtLocation(v, Gravity.BOTTOM, 0,100);
     }
+
+
     public void onShowPopupReview(View v, ArrayList<Reviews> commentsList, int i){
 
         LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -183,7 +207,7 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
         img.setVisibility(View.VISIBLE);
         TextView toptext1=(TextView) inflatedView.findViewById(R.id.rating);
         toptext1.setVisibility(View.VISIBLE);
-        double rating=0.0;
+         rating=0.0;
         for (int j=0;j<commentsList.size();j++)
         {
             if (commentsList.get(j).getRating().equals("leave"))
@@ -299,8 +323,21 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
             recipeViewHolder.tvName.setText(recipe_list.get(i).getName());
             recipeViewHolder.tvDate.setText(getDate(recipe_list.get(i).getDate(), "dd/MM/yyyy"));
             recipeViewHolder.tvType.setText(recipe_list.get(i).getType());
-            recipeViewHolder.tvContent.setText(recipe_list.get(i).getContent());
+            if (recipe_list.get(i).getContent().length() > 50){
+                String textView = recipe_list.get(i).getContent().substring(0, 50); //textView length is reduced to add ...
+                recipeViewHolder.tvContent.setText(textView+ "...");//adding the ... at the end
+            }
+
             recipeViewHolder.tvLikeCount.setText(recipe_list.get(i).getLikes());
+            recipeViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    context.startActivity(RecipeActivity.newIntent(context,recipe_list.get(i)));
+
+
+
+                }
+            });
 
             recipeViewHolder.tvCommentsCount.setText(String.valueOf(recipe_list.get(i).getCommentsArrayList().size()));
             recipeViewHolder.ivShare.setOnClickListener(new View.OnClickListener() {
@@ -418,9 +455,39 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
             recipeViewHolder.tvName.setText(recipe_list.get(i).getName());
             recipeViewHolder.tvDate.setText("Start Date: "+recipe_list.get(i).getStartdate());
             recipeViewHolder.endtvDate.setText("End Date: "+recipe_list.get(i).getEnddate().substring(0,10));
+            for (int j=0;j<recipe_list.get(i).getReviewsList().size();j++) {
+                if (recipe_list.get(i).getReviewsList().get(j).getType().equalsIgnoreCase("star")) {
+                    recipeViewHolder.ratimgs.setImageResource(R.drawable.star);
+                    recipeViewHolder.ratimgs.setVisibility(View.VISIBLE);
 
+                } else if (recipe_list.get(i).getReviewsList().get(j).getType().equalsIgnoreCase("heart")) {
+                    recipeViewHolder.ratimgh.setImageResource(R.drawable.heart);
+                    recipeViewHolder.ratimgh.setVisibility(View.VISIBLE);
+                } else if (recipe_list.get(i).getReviewsList().get(j).getType().equalsIgnoreCase("apple")) {
+                    recipeViewHolder.ratimga.setImageResource(R.drawable.apple);
+                    recipeViewHolder.ratimga.setVisibility(View.VISIBLE);
+                } else if (recipe_list.get(i).getReviewsList().get(j).getType().equalsIgnoreCase("flame")) {
+                    recipeViewHolder.ratimgf.setImageResource(R.drawable.fire);
+                    recipeViewHolder.ratimgf.setVisibility(View.VISIBLE);
+                }
+            }
             recipeViewHolder.tvType.setText(recipe_list.get(i).getType());
             recipeViewHolder.tvContent.setText(recipe_list.get(i).getContent());
+           double rating=0.0;
+            for (int j=0;j<recipe_list.get(i).getReviewsList().size();j++)
+            {
+                if (recipe_list.get(i).getReviewsList().get(j).getRating().equals("leave"))
+                {
+                    recipe_list.get(i).getReviewsList().remove(j);
+                }
+                else
+                {
+                    rating= rating+Double.parseDouble(recipe_list.get(i).getReviewsList().get(j).getRating());
+
+                }
+            }
+
+            recipeViewHolder.tvrat.setText(String.valueOf(rating));
             Helper helper = new Helper(context);
 
             User userMe = helper.getLoggedInUser();
@@ -440,9 +507,12 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
             }
             if (check){
                 recipeViewHolder.acceptchallenge.setVisibility(View.GONE);
+                recipeViewHolder.explore.setVisibility(View.GONE);
+              //  recipeViewHolder.tvrat.setText(commentsList.get(j).getRating());
                 recipeViewHolder.Seeinfo.setVisibility(View.VISIBLE);
             }else {
                 recipeViewHolder.acceptchallenge.setVisibility(View.VISIBLE);
+                recipeViewHolder.explore.setVisibility(View.VISIBLE);
                 recipeViewHolder.Seeinfo.setVisibility(View.GONE);
 
             }
@@ -513,16 +583,17 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
                         }
                         if (status) {
                             recipeViewHolder.acceptchallenge.setText("Go To Challenge");
+                            recipeViewHolder.explore.setVisibility(View.GONE);
                             //recipeViewHolder.Seeinfo.setVisibility(View.GONE);
 
                         }else {
-                            recipeViewHolder.acceptchallenge.setText("Accept Challenge");
+                            recipeViewHolder.acceptchallenge.setText("Join");
                           //  recipeViewHolder.Seeinfo.setVisibility(View.GONE);
 
                         }
 
                     } else {
-                        recipeViewHolder.acceptchallenge.setText("Accept Challenge");
+                        recipeViewHolder.acceptchallenge.setText("Join");
                         //recipeViewHolder.Seeinfo.setVisibility(View.GONE);
 
                     }
@@ -538,6 +609,15 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
                 @Override
                 public void onClick(View v) {
                     onShowPopupReview(recipeViewHolder.Seeinfo,recipe_list.get(i).getReviewsList(),i);
+
+                }
+            });
+
+            recipeViewHolder.explore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDaitail(recipe_list.get(i));
+
 
                 }
             });
@@ -605,6 +685,52 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
 
     }
 
+    private void showDaitail(RecipeModel recipeModel) {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("data/groups/"+recipeModel.getGroup());
+        Toast.makeText(context, "Wait" , Toast.LENGTH_SHORT).show();
+
+// Attach a listener to read the data at our posts reference
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Group main_group = dataSnapshot.getValue(Group.class);
+                AlertDialog.Builder dialogBuildernew = new AlertDialog.Builder(context);
+                LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+                View dialogLayout = inflater.inflate(R.layout.reviewdialognew, null);
+                dialogBuildernew.setView(dialogLayout);
+                AlertDialog alertDialognew = dialogBuildernew.create();
+                //set rounded dialog
+                alertDialognew.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                ImageView dialogdissmiss = dialogLayout.findViewById(R.id.back);
+                TextView  name = dialogLayout.findViewById(R.id.Name);
+                TextView date=dialogLayout.findViewById(R.id.date);
+                TextView description = dialogLayout.findViewById(R.id.description);
+                TextView member = dialogLayout.findViewById(R.id.member);
+                member.setText(main_group.getUserIds().size()+" members");
+                name.setText(main_group.getName());
+                date.setText(String.valueOf(recipeModel.getEnddate()));
+                description.setText(main_group.getStatus());
+                dialogdissmiss.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialognew.dismiss();
+                    }
+                });
+                alertDialognew.create();
+                alertDialognew.show();
+
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    System.out.println("The read failed: " + databaseError.getCode());
+                }
+            });
+
+    }
+
     @Override
     public int getItemViewType(int position) {
         return recipe_list.get(position).getType().equalsIgnoreCase("recipe")?0:1;
@@ -621,15 +747,18 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
         return formatter.format(calendar.getTime());
     }
     public class RecipeViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvDate,endtvDate, tvType, tvContent, tvCommentsCount, tvLikeCount,acceptchallenge,Seeinfo;
+        TextView tvName, tvDate,endtvDate, tvType, tvContent, tvCommentsCount, tvLikeCount,acceptchallenge,explore,Seeinfo,tvrat;
         ImageView ivProfilePicture, more,ivComments, ivLike, ivShare;
         RecyclerView rvSubmittedPics;
+        CircleImageView ratimga,ratimgf,ratimgs,ratimgh;
+        RelativeLayout recipicard;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
             tvDate = itemView.findViewById(R.id.tvDate);
             endtvDate = itemView.findViewById(R.id.endtvDate);
             acceptchallenge = itemView.findViewById(R.id.accept);
+            explore = itemView.findViewById(R.id.Explore);
             Seeinfo=itemView.findViewById(R.id.SeeInfo);
             ivComments = itemView.findViewById(R.id.ivComments);
             ivLike = itemView.findViewById(R.id.ivLike);
@@ -644,6 +773,14 @@ public class AdapterSubmittedPicsRecipe extends RecyclerView.Adapter<AdapterSubm
 
             ivProfilePicture = itemView.findViewById(R.id.ivProfilePicture);
             rvSubmittedPics = itemView.findViewById(R.id.rvSubmittedPics);
+            tvrat=itemView.findViewById(R.id.tvrat);
+             ratimga=itemView.findViewById(R.id.typea);
+            ratimgf=itemView.findViewById(R.id.typef);
+            ratimgs=itemView.findViewById(R.id.types);
+            ratimgh=itemView.findViewById(R.id.typeh);
+           recipicard=itemView.findViewById(R.id.parentLayout);
+
+
         }
     }
 }

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parentLayout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/backGround"
+            android:padding="@dimen/_10sdp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rlHeader"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentTop="true">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/image"
+                    app:cardCornerRadius="@dimen/_50sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/ivProfilePicture"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_alignParentLeft="true"
+                        android:src="@drawable/bg_logo" />
+                </androidx.cardview.widget.CardView>
+
+
+                <RelativeLayout
+                    android:id="@+id/rlNameDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_toRightOf="@+id/image"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/senderName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Matt Maxwell"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/senderName"
+                        android:text="19 Aug"
+                        android:visibility="visible"
+                        android:textColor="@color/transparent_black"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/bg_recipe_rounded_corners"
+                android:padding="@dimen/_5sdp"
+                android:text="Recipe"
+                android:visibility="gone"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_15sdp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSubmittedPics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvType"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            <View
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_below="@+id/rvSubmittedPics"
+                android:id="@+id/vw"
+                android:background="@color/textColorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vw"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_40sdp"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+
+                android:text="Hi, good day, I prepared this meal an I want to share the recipe"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp" />
+</ScrollView>
+
+
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/timeLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/backGround"
+                android:textSize="10sp"
+                android:visibility="gone" />
+
+            <include
+                layout="@layout/partial_message_status_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_5sdp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/footer"
+        android:layout_gravity="bottom"
+        android:padding="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp">
+            <ImageView
+                android:id="@+id/ivShare"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/_20sdp"
+                app:tint="@color/black"
+                android:src="@drawable/ic_share_black" />
+            <TextView
+                android:id="@+id/tvCommentsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toLeftOf="@+id/ivComments"
+                android:text="0"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <ImageView
+                android:id="@+id/ivComments"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_25sdp"
+                app:tint="@color/black"
+                android:layout_marginLeft="@dimen/_10sdp"
+
+                android:layout_toLeftOf="@+id/tvLikeCount"
+                android:src="@drawable/ic_message" />
+
+            <TextView
+                android:id="@+id/tvLikeCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toLeftOf="@+id/ivLike"
+                android:text="0"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <ImageView
+                android:id="@+id/ivLike"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginRight="20dp"
+                app:tint="@color/black"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_heart" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

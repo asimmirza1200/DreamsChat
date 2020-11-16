@@ -32,6 +32,7 @@ import android.os.Vibrator;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
@@ -158,6 +159,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmList;
@@ -375,6 +377,8 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
                 expired.setVisibility(View.VISIBLE);
                 Button donatestar = findViewById(R.id.donate);
                 Button leave = findViewById(R.id.leave);
+                LinearLayout bottombtn=findViewById(R.id.bottombtn);
+                bottombtn.setVisibility(View.GONE);
 
                 donatestar.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -586,6 +590,17 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
         usersImage = findViewById(R.id.users_image);
         status = findViewById(R.id.emotion);
         userName = findViewById(R.id.user_name);
+        CircleImageView ratimg=findViewById(R.id.type);
+
+     //   Button explore=findViewById(R.id.btnexplore);
+//        explore.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//            @Override
+//            public void onClick(View v) {
+//                showDaitail();
+//
+//            }
+//        });
 
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -668,6 +683,35 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
                 }
             });
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void showDaitail() {
+        AlertDialog.Builder dialogBuildernew = new AlertDialog.Builder(ChatActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.reviewdialognew, null);
+        dialogBuildernew.setView(dialogLayout);
+        AlertDialog alertDialognew = dialogBuildernew.create();
+        //set rounded dialog
+        alertDialognew.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        ImageView dialogdissmiss = dialogLayout.findViewById(R.id.back);
+        TextView  name = dialogLayout.findViewById(R.id.Name);
+        TextView date=dialogLayout.findViewById(R.id.date);
+        TextView description = dialogLayout.findViewById(R.id.description);
+        TextView member = dialogLayout.findViewById(R.id.member);
+        member.setText(group.getUserIds().size()+" members");
+        name.setText(group.getName());
+        date.setText(String.valueOf(recipeModel.getEnddate()));
+        description.setText(group.getStatus());
+        dialogdissmiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialognew.dismiss();
+            }
+        });
+        alertDialognew.create();
+        alertDialognew.show();
+
     }
 
     private View.OnTouchListener voiceMessageListener = new View.OnTouchListener() {

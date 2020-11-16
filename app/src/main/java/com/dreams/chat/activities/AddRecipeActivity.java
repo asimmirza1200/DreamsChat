@@ -68,7 +68,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                 finish();
             }
         });
-        mAwesomeValidation.addValidation(this, binding.etDescription.getId(), "[0-9a-zA-Z\\s\\.]+", R.string.err_description);
+    //    mAwesomeValidation.addValidation(this, binding.etDescription.getId(), "[0-9a-zA-Z\\s\\.]+", R.string.err_description);
         binding.btPostRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

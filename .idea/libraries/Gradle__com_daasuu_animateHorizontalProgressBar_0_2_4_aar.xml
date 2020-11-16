@@ -1,12 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.daasuu:animateHorizontalProgressBar:0.2.4@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-animateHorizontalProgressBar-0.2.4.aar/2fdcf115ec3cbd4e5c474e67978d9755/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-animateHorizontalProgressBar-0.2.4.aar/2fdcf115ec3cbd4e5c474e67978d9755/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-animateHorizontalProgressBar-0.2.4.aar/2fdcf115ec3cbd4e5c474e67978d9755/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-animateHorizontalProgressBar-0.2.4.aar/42269c5e5b9c722f707eff868ecd36fb/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-animateHorizontalProgressBar-0.2.4.aar/42269c5e5b9c722f707eff868ecd36fb/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-animateHorizontalProgressBar-0.2.4.aar/42269c5e5b9c722f707eff868ecd36fb/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-animateHorizontalProgressBar-0.2.4.aar/42269c5e5b9c722f707eff868ecd36fb/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
