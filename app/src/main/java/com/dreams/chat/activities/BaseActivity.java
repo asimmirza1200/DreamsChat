@@ -43,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ServiceC
     protected Helper helper;
     protected Realm rChatDb;
 
-    protected DatabaseReference usersRef, groupRef, chatRef, statusRef;
+    protected DatabaseReference usersRef, groupRef, chatRef, statusRef,recirefarance;
     private FirebaseApp secondApp;
     private FirebaseDatabase secondDatabase;
     private SinchService.SinchServiceInterface mSinchServiceInterface;

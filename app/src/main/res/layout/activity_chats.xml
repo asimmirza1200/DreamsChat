@@ -7,7 +7,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/chatToolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_80sdp"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         app:layout_collapseMode="pin">
 
@@ -170,10 +170,9 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_weight="1"
             android:clipToPadding="false"
-            android:padding="16dp" />
+            android:padding="4dp" />
 
         <RelativeLayout
             android:id="@+id/replyLay"

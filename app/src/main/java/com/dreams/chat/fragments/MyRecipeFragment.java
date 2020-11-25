@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.Nullable;
@@ -138,6 +139,7 @@ public class MyRecipeFragment extends Fragment {
 
                             }
                         }
+                        Collections.reverse(list);
                         AdapterSubmittedPicsRecipe postadapter = new AdapterSubmittedPicsRecipe(list, getContext());
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         recyclerView.setAdapter(postadapter);
@@ -167,6 +169,7 @@ public class MyRecipeFragment extends Fragment {
 
                                     }
                                 }
+                                Collections.reverse(list);
                                 AdapterSubmittedPicsRecipe postadapter = new AdapterSubmittedPicsRecipe(list, getContext());
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                                 recyclerView.setAdapter(postadapter);

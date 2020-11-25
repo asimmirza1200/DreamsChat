@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:id="@+id/parentLayout"
     android:clickable="true"
-
     android:orientation="vertical"
    >
     <androidx.cardview.widget.CardView
@@ -29,7 +28,6 @@
     <LinearLayout
         android:id="@+id/backGround"
         android:padding="@dimen/_10sdp"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -42,14 +40,30 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/image"
             app:cardCornerRadius="@dimen/_50sdp"
+            app:cardBackgroundColor="@color/bg_gray"
             android:layout_width="wrap_content"
+            android:background="@color/bg_gray"
             android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/phototxt"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text=""
+                android:background="@color/bg_gray"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_20sdp" />
             <ImageView
                 android:id="@+id/ivProfilePicture"
                 android:layout_width="@dimen/_50sdp"
                 android:layout_height="@dimen/_50sdp"
+                android:visibility="visible"
                 android:layout_alignParentLeft="true"
                 android:src="@drawable/bg_logo" />
+
         </androidx.cardview.widget.CardView>
 
 

@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import androidx.annotation.NonNull;
+
+import com.dreams.chat.models.RecipeModel;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -46,6 +48,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -81,6 +84,7 @@ public class ChatDetailActivity extends BaseActivity implements OnUserDetailFrag
     private String pickerPath;
     private ImagePicker imagePicker;
     private CameraImagePicker cameraPicker;
+    private RecipeModel recipeModel;
 
     @Override
     void myUsersResult(ArrayList<User> myUsers) {
@@ -181,6 +185,8 @@ public class ChatDetailActivity extends BaseActivity implements OnUserDetailFrag
         appBarLayout = findViewById(R.id.appBarLayout);
         userDetailsSummaryContainer = findViewById(R.id.userDetailsSummaryContainer);
         pickImage = findViewById(R.id.pickImage);
+       recipeModel= (RecipeModel)  getIntent().getBundleExtra(EXTRA_DATA_GROUP).getSerializable("recipe");
+        Toast.makeText(this, recipeModel.getProfile_picture(), Toast.LENGTH_SHORT).show();
         setSupportActionBar(((Toolbar) findViewById(R.id.toolbar)));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_keyboard_arrow_left_white_36dp);
@@ -329,6 +335,13 @@ public class ChatDetailActivity extends BaseActivity implements OnUserDetailFrag
                 if (task.isSuccessful()) {
                     Uri downloadUri = task.getResult();
                     group.setImage(downloadUri.toString());
+                    recipeModel.setProfile_picture(group.getImage());
+
+                    FirebaseDatabase.getInstance().getReference("public").child(recipeModel.getKey()).setValue(recipeModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                        }
+                    });
                     groupRef.child(group.getId()).setValue(group).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -634,10 +647,12 @@ public class ChatDetailActivity extends BaseActivity implements OnUserDetailFrag
         return intent;
     }
 
-    public static Intent newIntent(Context context, Group group) {
+    public static Intent newIntent(Context context, Group group,RecipeModel recipeModel) {
         Bundle bundle = new Bundle();
         Intent intent = new Intent(context, ChatDetailActivity.class);
         bundle.putParcelable(EXTRA_DATA_GROUP, group);
+        bundle.putSerializable("recipe", recipeModel);
+
         intent.putExtra(EXTRA_DATA_GROUP, bundle);
 //        intent.putExtra(EXTRA_DATA_GROUP, group);
         return intent;

@@ -365,7 +365,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
 //        }
         initUi();
 
-         recipeModel= (RecipeModel) intent.getSerializableExtra(EXTRA_DATA_Recipe);
+        recipeModel= (RecipeModel) intent.getSerializableExtra(EXTRA_DATA_Recipe);
         Date current = Calendar.getInstance().getTime();
         String string = "January 2, 2010";
         DateFormat format = new SimpleDateFormat("dd-MM-yyy HH:mm aa", Locale.ENGLISH);
@@ -1445,7 +1445,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
 //                        startActivityForResult(ChatDetailActivity.newIntent(this, user), REQUEST_CODE_UPDATE_USER);
 //                    }else if (group != null) {
 //                        if (!Constants.maingroup.getId().equals(group.getId())){
-                            startActivityForResult(ChatDetailActivity.newIntent(this, group), REQUEST_CODE_UPDATE_GROUP);
+                            startActivityForResult(ChatDetailActivity.newIntent(this, group,recipeModel), REQUEST_CODE_UPDATE_GROUP);
 
 //                        }
 
@@ -1566,7 +1566,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick,
             if (user != null)
                 startActivityForResult(ChatDetailActivity.newIntent(this, user), REQUEST_CODE_UPDATE_USER);
             else if (group != null)
-                startActivityForResult(ChatDetailActivity.newIntent(this, group), REQUEST_CODE_UPDATE_GROUP);
+                startActivityForResult(ChatDetailActivity.newIntent(this, group,recipeModel), REQUEST_CODE_UPDATE_GROUP);
         }
     }
 

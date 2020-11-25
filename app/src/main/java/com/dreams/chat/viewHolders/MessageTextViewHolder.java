@@ -94,7 +94,7 @@ public class MessageTextViewHolder extends BaseMessageViewHolder {
             backGround.setBackgroundResource(R.drawable.shape_incoming_message);
             senderName.setGravity(Gravity.END);
             senderName.setVisibility(View.GONE);
-            text.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
+            text.setGravity( Gravity.CENTER_VERTICAL);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             lp.gravity = Gravity.END;

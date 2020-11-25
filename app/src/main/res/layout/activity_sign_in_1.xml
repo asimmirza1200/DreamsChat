@@ -76,7 +76,6 @@
             android:id="@+id/layout_phone_number_input_LLY"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_below="@+id/layout_signin_mob_number_hint_TXT"
             android:orientation="horizontal">
 
@@ -104,11 +103,55 @@
 
         </LinearLayout>
 
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_below="@+id/layout_phone_number_input_LLY"
             android:background="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/txtname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_phone_number_input_LLY"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:text="Enter Name"
+            android:textColor="@color/textColor2"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:textSize="@dimen/_14sdp" />
+
+
+        <LinearLayout
+            android:id="@+id/namelayout"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtname"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:background="@null"
+                android:hint="Your name"
+                android:maxLength="20"
+                android:padding="@dimen/_5sdp"
+                android:maxLines="1"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/namelayout"
+            android:background="@color/colorAccent" />
+
 
         <TextView
             android:layout_width="match_parent"

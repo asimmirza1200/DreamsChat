@@ -79,7 +79,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="E:\flutterproject\DreamsChat\app\src\main\res\drawable\isologo.png" />
+                                                <entry key="imagePath" value="E:\flutterproject\DreamsChat\app\src\main\res\drawable\logoheader.png" />
                                                 <entry key="scalingPercent" value="88" />
                                                 <entry key="trimmed" value="true" />
                                               </map>

@@ -34,6 +34,13 @@ public class PostRecipeAdapter extends RecyclerView.Adapter<PostRecipeAdapter.Po
     @Override
     public void onBindViewHolder(@NonNull PostRecipeViewHolder postRecipeViewHolder, int i) {
         Glide.with(context).load(post_recipe_list.get(i).getPicture_url()).into(postRecipeViewHolder.ivSubmittedPics);
+        postRecipeViewHolder.closeimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                post_recipe_list.remove(i);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
@@ -42,10 +49,13 @@ public class PostRecipeAdapter extends RecyclerView.Adapter<PostRecipeAdapter.Po
     }
 
     public class PostRecipeViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivSubmittedPics;
+        ImageView ivSubmittedPics,closeimg;
         public PostRecipeViewHolder(@NonNull View itemView) {
             super(itemView);
             ivSubmittedPics=itemView.findViewById(R.id.ivSubmittedPics);
+            closeimg=itemView.findViewById(R.id.closebtn);
+            closeimg.setVisibility(View.VISIBLE);
+
         }
     }
 }

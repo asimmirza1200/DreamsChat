@@ -17,5 +17,9 @@
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_cooking"
-        android:title="All Recipe" />
+        android:title="Recipe" />
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Setting" />
 </menu>

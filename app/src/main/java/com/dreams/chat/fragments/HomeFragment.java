@@ -46,6 +46,8 @@ public class HomeFragment extends Fragment {
 
 
     public static ArrayList<User> myUsers = new ArrayList<>();
+    public static int scrollposition=0;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -55,6 +57,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+      scrollposition=0;
 
     }
 
@@ -75,8 +78,6 @@ public class HomeFragment extends Fragment {
             }
         });
         ImageView more =view. findViewById(R.id.more);
-
-
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,7 +90,6 @@ public class HomeFragment extends Fragment {
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         Intent intent = new Intent(getContext(), MyPostsActivity.class);
-
                         startActivity(intent);
                         return true;
                     }
@@ -129,12 +129,19 @@ public class HomeFragment extends Fragment {
                 getData();
             }
         });
-        getData();
+       // getData();
         return view;
+
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+            getData();
+    }
+
+
+
     void  getData(){
-
-
         FirebaseDatabase.getInstance().getReference().child("public")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -149,6 +156,8 @@ public class HomeFragment extends Fragment {
                         AdapterSubmittedPicsRecipe postadapter = new AdapterSubmittedPicsRecipe(list, getContext());
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         recyclerView.setAdapter(postadapter);
+                            recyclerView.scrollToPosition(scrollposition);
+
                         mySwipeRefreshLayout.setRefreshing(false);
 
                     }

@@ -34,26 +34,26 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference ref = database.getReference("data/groups/group_+923438851054_1604304148946");
-
-// Attach a listener to read the data at our posts reference
-                ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        Group main_group = dataSnapshot.getValue(Group.class);
-                        Constants.maingroup=main_group;
-                        Log.d("sdjslkjdlsk",new Gson().toJson(main_group));
+//                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                DatabaseReference ref = database.getReference("data/groups/group_+923438851054_1604304148946");
+//
+//// Attach a listener to read the data at our posts reference
+//                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        Group main_group = dataSnapshot.getValue(Group.class);
+//                        Constants.maingroup=main_group;
+//                        Log.d("sdjslkjdlsk",new Gson().toJson(main_group));
                         startActivity(helper.isLoggedIn()?new Intent(SplashActivity.this, HomeActivity.class):new Intent(SplashActivity.this, SignInActivity.class));
                         finish();
 
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        System.out.println("The read failed: " + databaseError.getCode());
-                    }
-                });
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//                        System.out.println("The read failed: " + databaseError.getCode());
+//                    }
+//                });
             }
         }, 1500);
     }

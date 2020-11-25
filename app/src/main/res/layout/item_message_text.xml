@@ -92,7 +92,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/_14sdp"
                         android:autoLink="web|phone|email"
                         android:gravity="center_vertical"
                         android:lineSpacingExtra="@dimen/_2sdp"

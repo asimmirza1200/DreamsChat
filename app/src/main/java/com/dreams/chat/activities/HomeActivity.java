@@ -255,6 +255,9 @@ public class HomeActivity extends BaseActivity implements HomeIneractor {
                         case R.id.navigation_addchallage:
                             addchallage();
                             return true;
+                        case R.id.navigation_setting:
+                            OptionsFragment.newInstance(getSinchServiceInterface()).show(getSupportFragmentManager(), OPTIONS_MORE);
+                            return true;
                     }
                     return false;
                 }
@@ -267,6 +270,7 @@ public class HomeActivity extends BaseActivity implements HomeIneractor {
 
                         @Override
                         public void onClick(DialogInterface dialogInterface, int index) {
+                            HomeFragment.scrollposition=0;
                             if (index==0){
                                 Intent recipe_intent=new Intent(HomeActivity.this, CreateChallengeActivity.class);
                                 startActivity(recipe_intent);

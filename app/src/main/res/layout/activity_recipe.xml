@@ -115,7 +115,6 @@
                 android:layout_marginRight="@dimen/_40sdp"
                 android:gravity="top|left"
                 android:inputType="textMultiLine"
-
                 android:text="Hi, good day, I prepared this meal an I want to share the recipe"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15sdp" />

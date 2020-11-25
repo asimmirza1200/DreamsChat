@@ -10,6 +10,9 @@
         android:layout_margin="@dimen/_10sdp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_15sdp">
+       <RelativeLayout
+           android:layout_width="100dp"
+           android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/ivSubmittedPics"
@@ -17,6 +20,20 @@
             android:scaleType="centerCrop"
             android:layout_height="120dp"
             android:src="@drawable/bg_logo" />
+           <ImageView
+               android:layout_width="@dimen/_30sdp"
+               android:layout_height="@dimen/_30sdp"
+               android:src="@drawable/ic_close_reply"
+               android:tint="@color/red"
+               android:layout_alignParentEnd="true"
+               android:layout_marginRight="@dimen/_5sdp"
+               android:layout_marginTop="@dimen/_5sdp"
+               android:backgroundTint="@color/red"
+               android:padding="@dimen/_5sdp"
+               android:id="@+id/closebtn"
+               android:visibility="gone"
+               />
+       </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

@@ -71,7 +71,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SignInActivity extends AppCompatActivity {
     private SearchableSpinner spinnerCountryCodes;
-    private EditText etPhone;
+    private EditText etPhone,edtname;
     private static final int REQUEST_CODE_SMS = 123;
     private Helper helper;
     private EditText otpCode;
@@ -85,6 +85,7 @@ public class SignInActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private boolean authInProgress;
     private TextView myCountryCodeTXT;
+     static String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +139,9 @@ public class SignInActivity extends AppCompatActivity {
 
             //if there is number to authenticate in preferences then initiate
             setContentView(TextUtils.isEmpty(phoneNumberInPrefs) ? R.layout.activity_sign_in_1 : R.layout.activity_sign_in_2);
+
+
+
             if (TextUtils.isEmpty(phoneNumberInPrefs)) {
                 //setup number selection
                 spinnerCountryCodes = findViewById(R.id.countryCode);
@@ -170,7 +174,12 @@ public class SignInActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if (TextUtils.isEmpty(phoneNumberInPrefs)) {
+
+                            edtname=findViewById(R.id.edtname);
+                            name =edtname.getText().toString();
+
                         submit();
+
                     } else {
                         //force authenticate
 
@@ -287,49 +296,51 @@ public class SignInActivity extends AppCompatActivity {
                         User user = dataSnapshot.getValue(User.class);
                         if (User.validate(user)) {
                             helper.setLoggedInUser(user);
-                            final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference ref = database.getReference("data/groups/group_+923438851054_1604304148946");
+                               done();
 
-// Attach a listener to read the data at our posts reference
-                            ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    Group main_group = dataSnapshot.getValue(Group.class);
-
-                                            Constants.maingroup=main_group;
-                                    if (main_group.getUserIds()!=null){
-                                        main_group.getUserIds().add(new User(phoneNumberInPrefs, phoneNumberInPrefs, getString(R.string.app_name), "").getId());
-
-                                    }else {
-                                        main_group.setUserIds(new ArrayList<>());
-                                        main_group.getUserIds().add(new User(phoneNumberInPrefs, phoneNumberInPrefs, getString(R.string.app_name), "").getId());
-
-                                    }
-                                    ref.setValue(main_group).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            Constants.maingroup=main_group;
-                                            done();
-
-                                            Toast.makeText(getApplicationContext(), "Member added" , Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-                                    System.out.println("The read failed: " + databaseError.getCode());
-                                }
-                            });
+//                            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                            DatabaseReference ref = database.getReference("data/groups/group_+923438851054_1604304148946");
+//
+//// Attach a listener to read the data at our posts reference
+//                            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//                                @Override
+//                                public void onDataChange(DataSnapshot dataSnapshot) {
+//                                    Group main_group = dataSnapshot.getValue(Group.class);
+//
+//                                            Constants.maingroup=main_group;
+//                                    if (main_group.getUserIds()!=null){
+//                                        main_group.getUserIds().add(new User(phoneNumberInPrefs, name, getString(R.string.app_name), "").getId());
+//
+//                                    }else {
+//                                        main_group.setUserIds(new ArrayList<>());
+//                                        main_group.getUserIds().add(new User(phoneNumberInPrefs, name, getString(R.string.app_name), "").getId());
+//
+//                                    }
+//                                    ref.setValue(main_group).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                        @Override
+//                                        public void onSuccess(Void aVoid) {
+//                                            Constants.maingroup=main_group;
+//                                            done();
+//
+//                                            Toast.makeText(getApplicationContext(), "Member added" , Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    });
+//
+//                                }
+//
+//                                @Override
+//                                public void onCancelled(DatabaseError databaseError) {
+//                                    System.out.println("The read failed: " + databaseError.getCode());
+//                                }
+//                            });
                         } else {
-                            createUser(new User(phoneNumberInPrefs, phoneNumberInPrefs, getString(R.string.app_name), ""));
+                            createUser(new User(phoneNumberInPrefs,name, getString(R.string.app_name), ""));
                         }
                     } catch (Exception ex) {
-                        createUser(new User(phoneNumberInPrefs, phoneNumberInPrefs, getString(R.string.app_name), ""));
+                        createUser(new User(phoneNumberInPrefs, name, getString(R.string.app_name), ""));
                     }
                 } else {
-                    createUser(new User(phoneNumberInPrefs, phoneNumberInPrefs, getString(R.string.app_name), ""));
+                    createUser(new User(phoneNumberInPrefs, name, getString(R.string.app_name), ""));
                 }
             }
 
@@ -342,36 +353,36 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void createUser(final User newUser) {
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("data/groups/group_+923438851054_1604304148946");
-
-// Attach a listener to read the data at our posts reference
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Group main_group = dataSnapshot.getValue(Group.class);
-                if (main_group.getUserIds()!=null){
-                    main_group.getUserIds().add(newUser.getId());
-
-                }else {
-                    main_group.setUserIds(new ArrayList<>());
-                    main_group.getUserIds().add(newUser.getId());
-
-                }
-                ref.setValue(main_group).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Constants.maingroup=main_group;
-                        Toast.makeText(getApplicationContext(), "Member added" , Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
+//        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference ref = database.getReference("data/groups/group_+923438851054_1604304148946");
+//
+//// Attach a listener to read the data at our posts reference
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                Group main_group = dataSnapshot.getValue(Group.class);
+//                if (main_group.getUserIds()!=null){
+//                    main_group.getUserIds().add(newUser.getId());
+//
+//                }else {
+//                    main_group.setUserIds(new ArrayList<>());
+//                    main_group.getUserIds().add(newUser.getId());
+//
+//                }
+//                ref.setValue(main_group).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        Constants.maingroup=main_group;
+//                        Toast.makeText(getApplicationContext(), "Member added" , Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                System.out.println("The read failed: " + databaseError.getCode());
+//            }
+//        });
 
 
 
